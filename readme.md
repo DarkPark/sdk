@@ -7,6 +7,14 @@ Meta-package to deploy SDK development environment.
 
 ## Usage ##
 
+Optional global dependencies:
+
+```bash
+sudo npm install -g mocha should
+```
+
+Deploy:
+
 ```bash
 init.sh
 ```
