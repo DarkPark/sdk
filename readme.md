@@ -2,11 +2,15 @@ SDK deployment
 ==============
 
 
+Meta-package to deploy SDK development environment.
+
+
 ## Usage ##
 
 ```bash
 init.sh
 ```
+
 
 ## Contribution ##
 

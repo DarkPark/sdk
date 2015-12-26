@@ -21,24 +21,3 @@ for organization in ${organizations[@]}; do
 
     cd ..
 done
-
-# prepare
-#mkdir cjs && cd cjs &&
-## get all repositories
-#for name in ${cjs}; do
-#    git clone "git@github.com:cjssdk/$name.git"
-#done
-#
-## prepare
-#mkdir spa && cd spa &&
-## get all repositories
-#for name in ${spa}; do
-#    git clone "git@github.com:spasdk/$name.git"
-#done
-#
-## prepare
-#mkdir stb && cd stb &&
-## get all repositories
-#for name in ${stb}; do
-#    git clone "git@github.com:stbsdk/$name.git"
-#done
