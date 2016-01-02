@@ -3,7 +3,7 @@
 # repositories
 organizations=(cjs spa stb)
 cjs=(async emitter format model parse-query parse-uri wamp)
-spa=(app boilerplate develop dom gettext gulp keys router)
+spa=(app boilerplate develop dom gettext gulp keys request router)
 stb=(app boilerplate develop gulp keys shim-classlist shim-bind shim-frame referrer)
 
 for organization in ${organizations[@]}; do
