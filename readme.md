@@ -1,22 +1,49 @@
-SDK deployment
-==============
-
-
-Meta-package to deploy SDK development environment.
+SDK deployment management
+=========================
 
 
 ## Usage ##
 
-Optional global dependencies:
+Install optional global dependencies:
 
 ```bash
 sudo npm install -g mocha should eslint gulp-cli jsdoc
 ```
 
-Deploy:
+Clone all repositories:
 
 ```bash
-init.sh
+./run.sh clone
+```
+
+Update all repositories:
+
+```bash
+./run.sh pull
+```
+
+Push commits for all repositories:
+
+```bash
+./run.sh push
+```
+
+List all packages with versions:
+
+```bash
+./run.sh version
+```
+
+Bind the necessary packages to the target project:
+
+```bash
+sudo ./run.sh bind [path to the project]
+```
+
+Unbind all bind packages in the target project:
+
+```bash
+sudo ./run.sh unbind [path to the project]
 ```
 
 
