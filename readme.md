@@ -10,7 +10,7 @@ Meta-package to deploy SDK development environment.
 Optional global dependencies:
 
 ```bash
-sudo npm install -g mocha should
+sudo npm install -g mocha should eslint gulp-cli jsdoc
 ```
 
 Deploy:
