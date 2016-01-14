@@ -3,7 +3,7 @@
 # repositories
 organizations=(cjs spa stb)
 cjs=(async emitter format model parse-query parse-uri wamp)
-spa=(app boilerplate component component-page develop dom gettext gulp gulp-jade gulp-lint gulp-pack gulp-repl gulp-sass gulp-webpack keys preloader request router)
+spa=(app boilerplate component component-page develop dom gettext gulp gulp-jade gulp-lint gulp-pack gulp-repl gulp-sass gulp-static gulp-webpack keys preloader request router)
 stb=(app boilerplate develop gulp gulp-proxy gulp-sass gulp-ssh gulp-weinre keys shim-classlist shim-bind shim-frame referrer)
 
 case "$1" in
