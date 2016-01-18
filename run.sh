@@ -1,10 +1,47 @@
 #!/usr/bin/env bash
 
-# repositories
-organizations=(cjs spa stb)
-cjs=(async emitter format model parse-query parse-uri wamp)
-spa=(app boilerplate component component-page develop dom gettext gulp gulp-eslint gulp-gettext gulp-jade gulp-repl gulp-sass gulp-static gulp-webpack gulp-zip keys preloader request router)
-stb=(app boilerplate develop gulp gulp-proxy gulp-sass gulp-ssh gulp-weinre keys shim-classlist shim-bind shim-frame referrer)
+# lists of names
+# to build project names
+
+organizations=(
+    cjs
+    spa
+    stb
+)
+
+cjs=(
+    async emitter format model parse-query parse-uri wamp
+)
+
+spa=(
+    app boilerplate develop dom gettext keys preloader request router
+    component
+        component-page
+    gulp
+        gulp-eslint
+        gulp-gettext
+        gulp-jade
+        gulp-repl
+        gulp-sass
+        gulp-static
+        gulp-webpack
+        gulp-zip
+)
+
+stb=(
+    app boilerplate develop keys referrer
+    shim-classlist
+    shim-bind
+    shim-frame
+    gulp
+        gulp-proxy
+        gulp-sass
+        gulp-ssh
+        gulp-weinre
+)
+
+
+# actions for projects
 
 case "$1" in
 
