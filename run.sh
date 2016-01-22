@@ -21,6 +21,7 @@ spa=(
         gulp-eslint
         gulp-gettext
         gulp-jade
+        gulp-livereload
         gulp-repl
         gulp-sass
         gulp-static
