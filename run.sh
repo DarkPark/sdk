@@ -69,6 +69,9 @@ case "$1" in
         ;;
 
     pull)
+        # meta-repo
+        git pull &
+        # sub-repositories
         for organization in ${organizations[@]}; do
             repos=$organization[@]
 
@@ -85,6 +88,9 @@ case "$1" in
         ;;
 
     push)
+        # meta-repo
+        git push &
+        # sub-repositories
         for organization in ${organizations[@]}; do
             repos=$organization[@]
 
