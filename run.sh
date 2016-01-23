@@ -70,34 +70,34 @@ case "$1" in
 
     pull)
         for organization in ${organizations[@]}; do
-            echo -e "\e[1m\e[32m[$organization]\e[0m"
             repos=$organization[@]
 
             cd $organization &&
 
             # update all organization repositories
             for name in ${!repos}; do
-                cd $name && echo $name && git pull && echo && cd ..
+                cd $name && git pull &
             done &&
 
             cd ..
         done
+        wait
         ;;
 
     push)
         for organization in ${organizations[@]}; do
-            echo -e "\e[1m\e[32m[$organization]\e[0m"
             repos=$organization[@]
 
             cd $organization &&
 
             # update all organization repositories
             for name in ${!repos}; do
-                cd $name && echo $name && git push && echo && cd ..
+                cd $name && git push &
             done &&
 
             cd ..
         done
+        wait
         ;;
 
     version)
