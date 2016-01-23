@@ -13,6 +13,29 @@
         "push": "./run.sh push",
         "clone": "./run.sh clone"
     },
-    "dependencies": {},
+    "dependencies": {
+        "extend": "3.*.*",
+        "jade": "1.*.*",
+        "code-proxy": "1.*.*",
+        "del": "2.*.*",
+        "gettext-parser": "1.*.*",
+        "gremlins.js": "marmelab/gremlins.js",
+        "gulp": "3.*.*",
+        "gulp-cached": "1.*.*",
+        "gulp-eslint": "1.*.*",
+        "gulp-livereload": "3.*.*",
+        "node-notifier": "4.*.*",
+        "gulp-repl": "0.*.*",
+        "gulp-util": "3.*.*",
+        "gulp-zip": "3.*.*",
+        "ip": "1.*.*",
+        "node-static": "0.*.*",
+        "node-sass": "3.*.*",
+        "open": "0.*.*",
+        "ssh2": "0.*.*",
+        "tty-colors": "0.*.*",
+        "webpack": "1.*.*",
+        "weinre": "2.0.0-pre-I0Z7U9OV"
+    },
     "license": "GPL-3.0"
 }
