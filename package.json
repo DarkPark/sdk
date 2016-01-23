@@ -14,6 +14,7 @@
         "clone": "./run.sh clone"
     },
     "dependencies": {
+        "chokidar": "1.*.*",
         "extend": "3.*.*",
         "jade": "1.*.*",
         "code-proxy": "1.*.*",
@@ -23,7 +24,6 @@
         "gulp": "3.*.*",
         "gulp-cached": "1.*.*",
         "gulp-eslint": "1.*.*",
-        "gulp-livereload": "3.*.*",
         "node-notifier": "4.*.*",
         "gulp-repl": "0.*.*",
         "gulp-util": "3.*.*",
@@ -34,6 +34,7 @@
         "open": "0.*.*",
         "ssh2": "0.*.*",
         "tty-colors": "0.*.*",
+        "tiny-lr": "0.*.*",
         "webpack": "1.*.*",
         "weinre": "2.0.0-pre-I0Z7U9OV"
     },
