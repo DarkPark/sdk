@@ -40,6 +40,7 @@ stb=(
         gulp-proxy
         gulp-sass
         gulp-ssh
+        gulp-webpack
         gulp-weinre
 )
 
