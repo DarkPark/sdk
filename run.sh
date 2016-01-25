@@ -31,7 +31,8 @@ spa=(
 
 stb=(
     app boilerplate develop keys referrer
-    component-page
+    component
+        component-page
     shim-classlist
     shim-bind
     shim-frame
