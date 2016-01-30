@@ -17,7 +17,7 @@ spa=(
     app boilerplate develop dom gettext keys preloader request router
     component
         component-page
-    gulp
+    system
         gulp-eslint
         gulp-gettext
         gulp-jade
@@ -36,7 +36,7 @@ stb=(
     shim-classlist
     shim-bind
     shim-frame
-    gulp
+    system
         gulp-proxy
         gulp-sass
         gulp-ssh
