@@ -18,9 +18,9 @@ spa=(
     component
         component-page
     system
+        system-jade
         gulp-eslint
         gulp-gettext
-        gulp-jade
         gulp-livereload
         gulp-repl
         gulp-sass
