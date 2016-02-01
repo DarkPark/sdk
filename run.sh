@@ -14,6 +14,7 @@ cjs=(
 )
 
 spa=(
+    spasdk
     app boilerplate develop dom gettext keys preloader request router
     component
         component-page
@@ -30,6 +31,7 @@ spa=(
 )
 
 stb=(
+    stbsdk
     app boilerplate develop keys referrer
     component
         component-page
