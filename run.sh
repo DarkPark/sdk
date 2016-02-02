@@ -10,7 +10,7 @@ organizations=(
 )
 
 cjs=(
-    async emitter format model parse-query parse-uri wamp
+    async emitter format model parse-query parse-uri runner wamp
 )
 
 spa=(
