@@ -19,7 +19,7 @@ spa=(
     component
         component-page
     system
-        system-jade
+        plugin-jade
         gulp-eslint
         gulp-gettext
         gulp-livereload
