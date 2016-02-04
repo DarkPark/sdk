@@ -182,6 +182,9 @@ case "$1" in
                             fi
                         done
                     done
+
+                    # additional dirs
+                    mount --bind "$source/spa/spasdk" "$target/spasdk" && echo "+spasdk"
                 else
                     echo "missing node_modules directory"
                 fi
@@ -218,6 +221,9 @@ case "$1" in
                             fi
                         done
                     done
+
+                    # additional dirs
+                    umount "$target/spasdk" && echo "+spasdk"
                 else
                     echo "missing node_modules directory"
                 fi
