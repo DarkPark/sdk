@@ -20,12 +20,12 @@ spa=(
         component-page
     system
         plugin-jade
+        plugin-static
         gulp-eslint
         gulp-gettext
         gulp-livereload
         gulp-repl
         gulp-sass
-        gulp-static
         gulp-webpack
         gulp-zip
 )
