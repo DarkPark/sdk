@@ -41,9 +41,9 @@ stb=(
     system
         plugin-sass
         plugin-webpack
+        plugin-weinre
         gulp-proxy
         gulp-ssh
-        gulp-weinre
 )
 
 
