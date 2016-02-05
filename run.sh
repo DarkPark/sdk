@@ -19,11 +19,11 @@ spa=(
     component
         component-page
     system
+        plugin-eslint
         plugin-jade
         plugin-sass
         plugin-static
         plugin-webpack
-        gulp-eslint
         gulp-gettext
         gulp-livereload
         gulp-repl
