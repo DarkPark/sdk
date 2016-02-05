@@ -22,11 +22,11 @@ spa=(
         plugin-eslint
         plugin-gettext
         plugin-jade
+        plugin-livereload
         plugin-sass
         plugin-static
         plugin-webpack
         plugin-zip
-        gulp-livereload
         gulp-repl
 )
 
