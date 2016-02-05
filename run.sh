@@ -14,11 +14,10 @@ cjs=(
 )
 
 spa=(
-    spasdk
     app boilerplate develop dom gettext keys preloader request router
     component
         component-page
-    system
+    spasdk
         plugin-eslint
         plugin-gettext
         plugin-jade
@@ -30,14 +29,13 @@ spa=(
 )
 
 stb=(
-    stbsdk
     app boilerplate develop keys referrer
     component
         component-page
     shim-classlist
     shim-bind
     shim-frame
-    system
+    stbsdk
         plugin-proxy
         plugin-sass
         plugin-ssh
