@@ -21,12 +21,12 @@ spa=(
     system
         plugin-jade
         plugin-static
+        plugin-webpack
         gulp-eslint
         gulp-gettext
         gulp-livereload
         gulp-repl
         gulp-sass
-        gulp-webpack
         gulp-zip
 )
 
@@ -39,10 +39,10 @@ stb=(
     shim-bind
     shim-frame
     system
+        plugin-webpack
         gulp-proxy
         gulp-sass
         gulp-ssh
-        gulp-webpack
         gulp-weinre
 )
 
