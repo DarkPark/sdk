@@ -24,6 +24,7 @@ spa=(
         plugin-livereload
         plugin-sass
         plugin-static
+        plugin-wamp
         plugin-webpack
         plugin-zip
 )
