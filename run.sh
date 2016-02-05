@@ -27,7 +27,6 @@ spa=(
         plugin-static
         plugin-webpack
         plugin-zip
-        gulp-repl
 )
 
 stb=(
