@@ -20,14 +20,14 @@ spa=(
         component-page
     system
         plugin-eslint
+        plugin-gettext
         plugin-jade
         plugin-sass
         plugin-static
         plugin-webpack
-        gulp-gettext
+        plugin-zip
         gulp-livereload
         gulp-repl
-        gulp-zip
 )
 
 stb=(
