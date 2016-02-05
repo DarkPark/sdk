@@ -39,10 +39,10 @@ stb=(
     shim-bind
     shim-frame
     system
+        plugin-proxy
         plugin-sass
         plugin-webpack
         plugin-weinre
-        gulp-proxy
         gulp-ssh
 )
 
