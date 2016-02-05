@@ -14,11 +14,11 @@
         "clone": "./run.sh clone"
     },
     "dependencies": {
+        "cjs-async": "1.*.*",
         "chokidar": "1.*.*",
         "extend": "3.*.*",
         "jade": "1.*.*",
         "code-proxy": "1.*.*",
-        "del": "2.*.*",
         "gettext-parser": "1.*.*",
         "gremlins.js": "marmelab/gremlins.js",
         "gulp": "3.*.*",
