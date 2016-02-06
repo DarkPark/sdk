@@ -26,6 +26,7 @@ spa=(
         plugin-static
         plugin-wamp
         plugin-webpack
+        plugin-webui
         plugin-zip
 )
 
