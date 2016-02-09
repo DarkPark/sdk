@@ -14,7 +14,7 @@
         "clone": "./run.sh clone"
     },
     "dependencies": {
-        "cjs-async": "1.*.*",
+        "cjs-async": "cjssdk/async",
         "chokidar": "1.*.*",
         "extend": "3.*.*",
         "jade": "1.*.*",
