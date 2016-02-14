@@ -6,6 +6,7 @@
     },
 
     "globals": {
+        "debug": false,
         "DEBUG": false
     },
 
