@@ -17,6 +17,7 @@ spa=(
     app boilerplate develop dom gettext preloader request router
     component
         component-page
+        component-button
     spasdk
         plugin-eslint
         plugin-gettext
