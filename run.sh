@@ -51,6 +51,25 @@ stb=(
 
 case "$1" in
 
+    lint)
+        for organization in ${organizations[@]}; do
+            echo -e "\e[1m\e[32m[$organization]\e[0m"
+            repos=$organization[@]
+
+            # prepare
+            cd $organization &&
+
+            # iterate all packages
+            for name in ${!repos}; do
+                cd $name && echo $name
+                eslint ./*.js ./lib/*.js
+                cd ..
+            done &&
+
+            cd ..
+        done
+        ;;
+
     clone)
         for organization in ${organizations[@]}; do
             echo -e "\e[1m\e[32m[$organization]\e[0m"
