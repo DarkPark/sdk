@@ -254,6 +254,22 @@ case "$1" in
         fi
         ;;
 
+    mount)
+        ./run.sh bind spa/boilerplate/
+        ./run.sh bind spa/plugin-webui/
+        ./run.sh bind spa/spasdk/
+        ./run.sh bind stb/stbsdk/
+        ./run.sh bind stb/boilerplate/
+        ;;
+
+    umount)
+        ./run.sh unbind spa/boilerplate/
+        ./run.sh unbind spa/plugin-webui/
+        ./run.sh unbind spa/spasdk/
+        ./run.sh unbind stb/stbsdk/
+        ./run.sh unbind stb/boilerplate/
+        ;;
+
     *)
         echo "available commands: clone, pull, push, version, publish, bind, unbind"
         ;;
