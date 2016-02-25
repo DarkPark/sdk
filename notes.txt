@@ -1,0 +1,48 @@
+spa-app/sass/vars/default.scss
+spa-component/sass/vars/default.scss
+spa-component-page/sass/vars/default.scss
+spa-component-list/sass/vars/default.scss
+spa-develop/sass/vars/default.scss
+
+src/sass/vars/default.scss
+
+spa-app/sass/main.scss
+spa-component/sass/main.scss
+spa-component-page/sass/main.scss
+spa-component-list/sass/main.scss
+spa-develop/sass/main.scss
+
+src/sass/main.scss
+
+
+
+
+
+
+spa-app:vars
+spa-component:vars
+spa-component-*:vars
+spa-develop:vars
+
+src:vars
+
+spa-app:main
+spa-component:main
+spa-component-*:main
+spa-develop:main
+
+src:main
+
+
+
++ генерировать карту подключенных файлов для webpack и использовать ее в sass
+~ разорвать все связи между плагинами (осталось livereload+webpack)
++ мета-пакет с глобальной (локальной) установкой
+консоль в системной вкладке
+
+
+require('cjs-validator')(
+    {value: this, rules: {type: 'object'}, message: 'must be constructed via new', context: __filename},
+    {value: this, rules: {string: {minSize: 1}}, context: __filename},
+    {value: this, rules: {string: {minSize: 1}}, context: __filename}
+);
