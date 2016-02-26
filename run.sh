@@ -255,6 +255,20 @@ case "$1" in
         fi
         ;;
 
+    install)
+        (cd spa/boilerplate/ && npm install)
+        (cd spa/spasdk/      && npm install)
+        (cd stb/stbsdk/      && npm install)
+        (cd stb/boilerplate/ && npm install)
+        ;;
+
+    update)
+        (cd spa/boilerplate/ && npm update)
+        (cd spa/spasdk/      && npm update)
+        (cd stb/stbsdk/      && npm update)
+        (cd stb/boilerplate/ && npm update)
+        ;;
+
     mount)
         ./run.sh bind spa/boilerplate/
         ./run.sh bind spa/plugin-webui/
