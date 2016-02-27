@@ -9,6 +9,8 @@
     "repository": "darkpark/sdk",
     "scripts": {
         "lint": "eslint ./**/*.js",
+        "install": "./run.sh install",
+        "update": "./run.sh update",
         "pull": "./run.sh pull",
         "push": "./run.sh push",
         "clone": "./run.sh clone"
