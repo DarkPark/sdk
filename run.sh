@@ -269,6 +269,13 @@ case "$1" in
         (cd stb/boilerplate/ && npm update)
         ;;
 
+    outdated)
+        (cd spa/boilerplate/ && npm outdated)
+        (cd spa/spasdk/      && npm outdated)
+        (cd stb/stbsdk/      && npm outdated)
+        (cd stb/boilerplate/ && npm outdated)
+        ;;
+
     mount)
         ./run.sh bind spa/boilerplate/
         ./run.sh bind spa/plugin-webui/
