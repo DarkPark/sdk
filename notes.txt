@@ -46,3 +46,11 @@ require('cjs-validator')(
     {value: this, rules: {string: {minSize: 1}}, context: __filename},
     {value: this, rules: {string: {minSize: 1}}, context: __filename}
 );
+
+
+
+@import "../../../node_modules/spa-app/css/develop.css";
+@import "../../../node_modules/spa-component-page/css/develop.css";
+@import "../../../node_modules/spa-component/css/develop.css";
+@import "../vars.scss";
+@import "../develop.scss";
