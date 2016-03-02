@@ -292,6 +292,22 @@ case "$1" in
         ./run.sh unbind stb/boilerplate/
         ;;
 
+    sass)
+        (
+            cd spa
+            # build
+            (cd app && npm run-script sass)
+            (cd component && npm run-script sass)
+            (cd component-button && npm run-script sass)
+            (cd component-page && npm run-script sass)
+        )
+        (
+            cd stb
+            # build
+            (cd app && npm run-script sass)
+        )
+        ;;
+
     *)
         echo "available commands: clone, pull, push, version, publish, bind, unbind"
         ;;
