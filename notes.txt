@@ -52,5 +52,10 @@ require('cjs-validator')(
 @import "../../../node_modules/spa-app/css/develop.css";
 @import "../../../node_modules/spa-component-page/css/develop.css";
 @import "../../../node_modules/spa-component/css/develop.css";
-@import "../vars.scss";
-@import "../develop.scss";
+@import "../develop.css";
+
+
+@import "../../../node_modules/stb-app/css/develop.480.css";
+@import "../../../node_modules/stb-component/css/develop.480.css";
+@import "../../../node_modules/stb-component-page/css/develop.480.css";
+@import "../develop.480.css";
