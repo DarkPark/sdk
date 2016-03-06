@@ -20,6 +20,7 @@ spa=(
         component-button
     spasdk
         plugin
+        plugin-css
         plugin-eslint
         plugin-gettext
         plugin-jade
