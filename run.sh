@@ -42,6 +42,7 @@ stb=(
     shim-bind
     shim-frame
     stbsdk
+        plugin-css
         plugin-proxy
         plugin-sass
         plugin-ssh
