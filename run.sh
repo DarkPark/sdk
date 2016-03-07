@@ -300,6 +300,7 @@ case "$1" in
         ./run.sh bind stb/component-button/
         ./run.sh bind stb/component-page/
         ./run.sh bind stb/stbsdk/
+        ./run.sh bind stb/stbsdk/node_modules/spasdk
         ;;
 
     umount)
@@ -312,6 +313,7 @@ case "$1" in
         ./run.sh unbind stb/component-button/
         ./run.sh unbind stb/component-page/
         ./run.sh unbind stb/stbsdk/
+        ./run.sh unbind stb/stbsdk/node_modules/spasdk
         ;;
 
     sass)
