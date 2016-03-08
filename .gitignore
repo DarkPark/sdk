@@ -1,5 +1,8 @@
 .idea
 node_modules
-cjs
-spa
-stb
+cjs/*
+!cjs/.eslintrc.js
+spa/*
+!spa/.eslintrc.js
+stb/*
+!stb/.eslintrc.js
