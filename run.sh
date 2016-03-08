@@ -11,10 +11,12 @@ organizations=(
 
 cjs=(
     async emitter format model parse-query parse-uri runner wamp
+    eslint-config
 )
 
 spa=(
     app boilerplate develop dom gettext preloader request router
+    eslint-config
     component
         component-button
         component-checkbox
@@ -37,6 +39,7 @@ spa=(
 
 stb=(
     app boilerplate develop referrer rc
+    eslint-config
     component
         component-button
         component-checkbox
@@ -53,6 +56,9 @@ stb=(
         plugin-webpack
         plugin-weinre
 )
+
+COLOR_RED='\e[0;31m'
+COLOR_RESET='\e[0m'
 
 
 # actions for projects
@@ -75,6 +81,44 @@ case "$1" in
             done &&
 
             cd ..
+        done
+        ;;
+
+    link)
+        for organization in ${organizations[@]}; do
+            echo -e "\e[1m\e[32m[$organization]\e[0m"
+            repos=$organization[@]
+
+            # iterate all packages
+            for name in ${!repos}; do
+                source=`realpath "${organization}/${name}"`
+                target="/usr/lib/node_modules/`node -e "console.log(require('${source}/package.json').name);"`"
+
+                if [ -L "$target" ]; then
+                    echo -e "!$target ${COLOR_RED}already exists${COLOR_RESET}"
+                else
+                    ln -s $source $target && echo "+$target -> $source"
+                fi
+            done
+        done
+        ;;
+
+    unlink)
+        for organization in ${organizations[@]}; do
+            echo -e "\e[1m\e[32m[$organization]\e[0m"
+            repos=$organization[@]
+
+            # iterate all packages
+            for name in ${!repos}; do
+                source=`realpath "${organization}/${name}"`
+                target="/usr/lib/node_modules/`node -e "console.log(require('${source}/package.json').name);"`"
+
+                if [ -L "$target" ]; then
+                    rm $target && echo "-$target"
+                else
+                    echo -e "!$target ${COLOR_RED}does not exist${COLOR_RESET}"
+                fi
+            done
         done
         ;;
 
