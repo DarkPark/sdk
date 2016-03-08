@@ -326,6 +326,7 @@ case "$1" in
             (cd component && npm run-script sass)
             (cd component-button && npm run-script sass)
             (cd component-page && npm run-script sass)
+            (cd component-panel && npm run-script sass)
         )
         (
             cd stb
@@ -334,6 +335,7 @@ case "$1" in
             (cd component && npm run-script sass)
             (cd component-button && npm run-script sass)
             (cd component-page && npm run-script sass)
+            (cd component-panel && npm run-script sass)
         )
         ;;
 
