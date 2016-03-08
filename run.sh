@@ -17,6 +17,7 @@ spa=(
     app boilerplate develop dom gettext preloader request router
     component
         component-button
+        component-checkbox
         component-page
         component-panel
     spasdk
@@ -38,6 +39,7 @@ stb=(
     app boilerplate develop referrer rc
     component
         component-button
+        component-checkbox
         component-page
         component-panel
     shim-classlist
@@ -261,35 +263,42 @@ case "$1" in
         ;;
 
     install)
-        (cd spa/boilerplate/      && npm install)
-        (cd spa/spasdk/           && npm install)
-        (cd stb/app/              && npm install)
-        (cd stb/boilerplate/      && npm install)
-        (cd stb/component/        && npm install)
-        (cd stb/component-button/ && npm install)
-        (cd stb/component-page/   && npm install)
-        (cd stb/stbsdk/           && npm install)
+        (cd spa/boilerplate/        && npm install)
+        (cd spa/spasdk/             && npm install)
+        (cd stb/app/                && npm install)
+        (cd stb/boilerplate/        && npm install)
+        (cd stb/component/          && npm install)
+        (cd stb/component-button/   && npm install)
+        (cd stb/component-checkbox/ && npm install)
+        (cd stb/component-page/     && npm install)
+        (cd stb/component-panel/    && npm install)
+        (cd stb/stbsdk/             && npm install)
         ;;
 
     update)
-        (cd spa/boilerplate/      && npm update)
-        (cd spa/spasdk/           && npm update)
-        (cd stb/app/              && npm update)
-        (cd stb/boilerplate/      && npm update)
-        (cd stb/component/        && npm update)
-        (cd stb/component-page/   && npm update)
-        (cd stb/stbsdk/           && npm update)
+        (cd spa/boilerplate/        && npm update)
+        (cd spa/spasdk/             && npm update)
+        (cd stb/app/                && npm update)
+        (cd stb/boilerplate/        && npm update)
+        (cd stb/component/          && npm update)
+        (cd stb/component-button/   && npm update)
+        (cd stb/component-checkbox/ && npm update)
+        (cd stb/component-page/     && npm update)
+        (cd stb/component-panel/    && npm update)
+        (cd stb/stbsdk/             && npm update)
         ;;
 
     outdated)
-        (cd spa/boilerplate/      && npm outdated)
-        (cd spa/spasdk/           && npm outdated)
-        (cd stb/app/              && npm outdated)
-        (cd stb/boilerplate/      && npm outdated)
-        (cd stb/component/        && npm outdated)
-        (cd stb/component-button/ && npm outdated)
-        (cd stb/component-page/   && npm outdated)
-        (cd stb/stbsdk/           && npm outdated)
+        (cd spa/boilerplate/        && npm outdated)
+        (cd spa/spasdk/             && npm outdated)
+        (cd stb/app/                && npm outdated)
+        (cd stb/boilerplate/        && npm outdated)
+        (cd stb/component/          && npm outdated)
+        (cd stb/component-button/   && npm outdated)
+        (cd stb/component-checkbox/ && npm outdated)
+        (cd stb/component-page/     && npm outdated)
+        (cd stb/component-panel/    && npm outdated)
+        (cd stb/stbsdk/             && npm outdated)
         ;;
 
     mount)
@@ -300,7 +309,9 @@ case "$1" in
         ./run.sh bind stb/boilerplate/
         ./run.sh bind stb/component/
         ./run.sh bind stb/component-button/
+        ./run.sh bind stb/component-checkbox/
         ./run.sh bind stb/component-page/
+        ./run.sh bind stb/component-panel/
         ./run.sh bind stb/stbsdk/
         ./run.sh bind stb/stbsdk/node_modules/spasdk
         ;;
@@ -313,7 +324,9 @@ case "$1" in
         ./run.sh unbind stb/boilerplate/
         ./run.sh unbind stb/component/
         ./run.sh unbind stb/component-button/
+        ./run.sh unbind stb/component-checkbox/
         ./run.sh unbind stb/component-page/
+        ./run.sh unbind stb/component-panel/
         ./run.sh unbind stb/stbsdk/
         ./run.sh unbind stb/stbsdk/node_modules/spasdk
         ;;
@@ -325,6 +338,7 @@ case "$1" in
             (cd app && npm run-script sass)
             (cd component && npm run-script sass)
             (cd component-button && npm run-script sass)
+            (cd component-checkbox && npm run-script sass)
             (cd component-page && npm run-script sass)
             (cd component-panel && npm run-script sass)
         )
@@ -334,6 +348,7 @@ case "$1" in
             (cd app && npm run-script sass)
             (cd component && npm run-script sass)
             (cd component-button && npm run-script sass)
+            (cd component-checkbox && npm run-script sass)
             (cd component-page && npm run-script sass)
             (cd component-panel && npm run-script sass)
         )
