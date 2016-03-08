@@ -16,8 +16,9 @@ cjs=(
 spa=(
     app boilerplate develop dom gettext preloader request router
     component
-        component-page
         component-button
+        component-page
+        component-panel
     spasdk
         plugin
         plugin-css
@@ -36,8 +37,9 @@ spa=(
 stb=(
     app boilerplate develop referrer rc
     component
-        component-page
         component-button
+        component-page
+        component-panel
     shim-classlist
     shim-bind
     shim-frame
