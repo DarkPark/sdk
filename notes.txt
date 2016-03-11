@@ -35,7 +35,7 @@ src:main
 
 
 
-+ генерировать карту подключенных файлов для webpack и использовать ее в sass
+- генерировать карту подключенных файлов для webpack и использовать ее в sass
 ~ разорвать все связи между плагинами (осталось livereload+webpack)
 + мета-пакет с глобальной (локальной) установкой
 консоль в системной вкладке
@@ -59,3 +59,25 @@ require('cjs-validator')(
 @import "../../../node_modules/stb-component/css/develop.480.css";
 @import "../../../node_modules/stb-component-page/css/develop.480.css";
 @import "../develop.480.css";
+
+
+
+в файле main.js
+
+app.pages = {
+    init: require('pages/init'),
+    main: require('pages/main'),
+    help: require('pages/help')
+};
+
+app.pages.main.show();
+app.route(app.pages.main);
+
+
+в файле pages/main.js
+
+app.on('load', function () {});
+page.on('show', function () {});
+
+
+app.activePage.activeComponent
