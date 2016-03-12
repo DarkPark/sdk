@@ -38,6 +38,7 @@ src:main
 - генерировать карту подключенных файлов для webpack и использовать ее в sass
 ~ разорвать все связи между плагинами (осталось livereload+webpack)
 + мета-пакет с глобальной (локальной) установкой
+~ async: remove func names (fail in release)
 консоль в системной вкладке
 
 
@@ -62,22 +63,36 @@ require('cjs-validator')(
 
 
 
-в файле main.js
+// в файле main.js вместо наполнения роутера:
+require('pages/init');
+require('pages/main');
+require('pages/help');
 
+// или даже так для дальнейшего быстрого доступа:
 app.pages = {
     init: require('pages/init'),
     main: require('pages/main'),
     help: require('pages/help')
 };
 
-app.pages.main.show();
-app.route(app.pages.main);
+// переход на нужную страницу:
+//require('pages/main').show();
+// или
+//app.pages.main.show();
+// альтернативные подходы:
+app.route(app.pages.main, someData);
+//app.navigate(app.pages.main);
 
+// в файле pages/main.js:
+app.on('load', function () { ... });
+app.on('unload', function () { ... });
+page.on('show', function () { ... });
+page.on('hide', function () { ... });
 
-в файле pages/main.js
+// возврат на предыдущую страницу:
+// (каждая страница знает куда возвращаться)
+//app.pages.main.back();
+app.route(page.previous);
 
-app.on('load', function () {});
-page.on('show', function () {});
-
-
+// доступ к текущему активному элементу:
 app.activePage.activeComponent
