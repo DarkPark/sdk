@@ -20,6 +20,7 @@ spa=(
     component
         component-button
         component-checkbox
+        component-grid
         component-list
         component-page
         component-panel
@@ -44,6 +45,7 @@ stb=(
     component
         component-button
         component-checkbox
+        component-grid
         component-list
         component-page
         component-panel
@@ -316,6 +318,7 @@ case "$1" in
         (cd stb/component/          && npm install)
         (cd stb/component-button/   && npm install)
         (cd stb/component-checkbox/ && npm install)
+        (cd stb/component-grid/     && npm install)
         (cd stb/component-list/     && npm install)
         (cd stb/component-page/     && npm install)
         (cd stb/component-panel/    && npm install)
@@ -330,6 +333,7 @@ case "$1" in
         (cd stb/component/          && npm update)
         (cd stb/component-button/   && npm update)
         (cd stb/component-checkbox/ && npm update)
+        (cd stb/component-grid/     && npm update)
         (cd stb/component-list/     && npm update)
         (cd stb/component-page/     && npm update)
         (cd stb/component-panel/    && npm update)
@@ -344,6 +348,7 @@ case "$1" in
         (cd stb/component/          && npm outdated)
         (cd stb/component-button/   && npm outdated)
         (cd stb/component-checkbox/ && npm outdated)
+        (cd stb/component-grid/     && npm outdated)
         (cd stb/component-list/     && npm outdated)
         (cd stb/component-page/     && npm outdated)
         (cd stb/component-panel/    && npm outdated)
@@ -359,6 +364,7 @@ case "$1" in
         ./run.sh bind stb/component/
         ./run.sh bind stb/component-button/
         ./run.sh bind stb/component-checkbox/
+        ./run.sh bind stb/component-grid/
         ./run.sh bind stb/component-list/
         ./run.sh bind stb/component-page/
         ./run.sh bind stb/component-panel/
@@ -375,6 +381,7 @@ case "$1" in
         ./run.sh unbind stb/component/
         ./run.sh unbind stb/component-button/
         ./run.sh unbind stb/component-checkbox/
+        ./run.sh unbind stb/component-grid/
         ./run.sh unbind stb/component-list/
         ./run.sh unbind stb/component-page/
         ./run.sh unbind stb/component-panel/
@@ -390,6 +397,7 @@ case "$1" in
             (cd component && npm run-script sass)
             (cd component-button && npm run-script sass)
             (cd component-checkbox && npm run-script sass)
+            (cd component-grid && npm run-script sass)
             (cd component-list && npm run-script sass)
             (cd component-page && npm run-script sass)
             (cd component-panel && npm run-script sass)
@@ -401,6 +409,7 @@ case "$1" in
             (cd component && npm run-script sass)
             (cd component-button && npm run-script sass)
             (cd component-checkbox && npm run-script sass)
+            (cd component-grid && npm run-script sass)
             (cd component-list && npm run-script sass)
             (cd component-page && npm run-script sass)
             (cd component-panel && npm run-script sass)
