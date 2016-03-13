@@ -15,7 +15,7 @@ cjs=(
 )
 
 spa=(
-    app boilerplate develop dom gettext preloader request router
+    app boilerplate develop dom gettext preloader request
     eslint-config
     component
         component-button
