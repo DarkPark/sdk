@@ -148,6 +148,25 @@ case "$1" in
         done
         ;;
 
+    clean)
+        source="$(realpath .)"
+        for organization in ${organizations[@]}; do
+            echo -e "\e[1m\e[32m[$organization]\e[0m"
+            repos=$organization[@]
+
+            # iterate all packages
+            for name in ${!repos}; do
+                target="$source/$organization/$name/node_modules"
+
+                if [ -d ${target} ]; then
+                    rm -rf $target && echo -$target
+                fi
+            done &&
+
+            cd ..
+        done
+        ;;
+
     pull)
         # meta-repo
         git pull &
