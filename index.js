@@ -93,13 +93,33 @@ function isGlobalPackage ( name ) {
 }
 
 
-Object.keys(repos).forEach(function ( orgName ) {
+function getDependencies ( pkgFile ) {
+    var info = require(pkgFile),
+        list = [];
+
+    Object.keys(info.dependencies || {}).forEach(function ( depName ) {
+        if ( !isGlobalPackage(depName) ) {
+            list.push(depName + '@' + info.dependencies[depName]);
+        }
+    });
+
+    Object.keys(info.devDependencies || {}).forEach(function ( depName ) {
+        if ( !isGlobalPackage(depName) ) {
+            list.push(depName + '@' + info.devDependencies[depName]);
+        }
+    });
+
+    return list;
+}
+
+
+/*Object.keys(repos).forEach(function ( orgName ) {
     Object.keys(repos[orgName]).forEach(function ( repoName ) {
         var name = repos[orgName][repoName];
 
         name && packages.push(name);
     });
-});
+});*/
 
 
 methods.clone = function () {
@@ -175,41 +195,12 @@ methods.push = function () {
 
 
 methods.install = function () {
-    //console.log(packages);
     Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
-            var info = require(path.join(root, orgName, repoName, 'package.json')),
-                list = [];
-
-            //console.log(info.name);
-
-            Object.keys(info.dependencies || {}).forEach(function ( depName ) {
-                //if ( packages.indexOf(depName) === -1 ) {
-                if ( !isGlobalPackage(depName) ) {
-                    list.push(depName + '@' + info.dependencies[depName]);
-                }
-            });
-
-            Object.keys(info.devDependencies || {}).forEach(function ( depName ) {
-                //console.log(require.resolve(depName));
-                //if ( packages.indexOf(depName) === -1 ) {
-                if ( !isGlobalPackage(depName) ) {
-                    list.push(depName + '@' + info.devDependencies[depName]);
-                }
-            });
-
-            //console.log(list);
-            //return;
-
-            //list = list.join(' ');
+            var list = getDependencies(path.join(root, orgName, repoName, 'package.json'));
 
             if ( list.length ) {
-                exec('npm', [
-                    'install'
-                    //list
-                ].concat(list), {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
-                    //console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
-
+                exec('npm', ['install'].concat(list), {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
                     if ( error ) {
                         console.error(error);
                         process.exitCode = 1;
@@ -221,33 +212,76 @@ methods.install = function () {
             }
         });
     });
-
-
-    /*var npm = require('npm');
-
-    console.log(npm);
-
-    npm.load(function ( error ) {
-        if ( error ) {
-            console.log(error);
-            return;
-        }
-
-        npm.commands.install(['ip'], true, function ( error, data ) {
-            if ( error ) {
-                console.log(error);
-                return;
-            }
-
-            console.log(data);
-        });
-
-        // npm.on('log', function ( message ) {
-        //     // log installation progress
-        //     console.log(message);
-        // });
-    });*/
 };
+
+
+methods.outdated = function () {
+    Object.keys(repos).forEach(function ( orgName ) {
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            exec('npm', ['outdated', '--parseable'], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+                console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
+
+                if ( error ) {
+                    console.error(error);
+                    process.exitCode = 1;
+                } else {
+                    //stderr && console.log(stderr);
+                    //stdout && console.log(stdout);
+                    stdout.split('\n').forEach(function ( line ) {
+                        if ( line.indexOf('MISSING') === -1 ) {
+                            console.log(line);
+                        }
+                    })
+                }
+            });
+        });
+    });
+};
+
+
+methods.reset = function () {
+    Object.keys(repos).forEach(function ( orgName ) {
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            exec(
+                'rm',
+                ['-rf', './node_modules'],
+                {cwd: path.join(root, orgName, repoName)},
+                function ( error, stdout, stderr ) {
+                    console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
+
+                    if ( error ) {
+                        console.error(error);
+                        process.exitCode = 1;
+                    } else {
+                        stderr && console.log(stderr);
+                        stdout && console.log(stdout);
+                    }
+                }
+            );
+        });
+    });
+};
+
+
+/*methods.update = function () {
+    Object.keys(repos).forEach(function ( orgName ) {
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            var list = getDependencies(path.join(root, orgName, repoName, 'package.json'));
+
+            if ( list.length ) {
+                exec('npm', ['update'].concat(list), {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+                    if ( error ) {
+                        console.error(error);
+                        process.exitCode = 1;
+                    } else {
+                        stderr && console.log(stderr);
+                        stdout && console.log(stdout);
+                    }
+                });
+            }
+        });
+    });
+};*/
 
 
 // exec given command
