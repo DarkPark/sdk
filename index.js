@@ -5,12 +5,13 @@
 
 'use strict';
 
-var fs      = require('fs'),
-    path    = require('path'),
-    util    = require('util'),
-    exec    = require('child_process').execFile,
-    methods = {},
-    repos   = {
+var fs       = require('fs'),
+    path     = require('path'),
+    util     = require('util'),
+    exec     = require('child_process').execFile,
+    methods  = {},
+    packages = [],
+    repos    = {
         cjssdk: {
             'async': 'cjs-async',
             'emitter': 'cjs-emitter',
@@ -24,7 +25,7 @@ var fs      = require('fs'),
         },
         spasdk: {
             'app': 'spa-app',
-            'boilerplate': 'spa-boilerplate',
+            'boilerplate': null,
             'develop': 'spa-develop',
             'dom': 'spa-dom',
             'gettext': 'spa-gettext',
@@ -54,7 +55,7 @@ var fs      = require('fs'),
         },
         stbsdk: {
             'app': 'stb-app',
-            'boilerplate': 'stb-boilerplate',
+            'boilerplate': null,
             'develop': 'stb-develop',
             'referrer': 'stb-referrer',
             'rc': 'stb-rc',
@@ -81,26 +82,49 @@ var fs      = require('fs'),
     root = process.cwd();
 
 
+function isGlobalPackage ( name ) {
+    try {
+        if ( require.resolve(name) ) {
+            return true;
+        }
+    } catch ( e ) {
+        return false;
+    }
+}
+
+
+Object.keys(repos).forEach(function ( orgName ) {
+    Object.keys(repos[orgName]).forEach(function ( repoName ) {
+        var name = repos[orgName][repoName];
+
+        name && packages.push(name);
+    });
+});
+
+
 methods.clone = function () {
     Object.keys(repos).forEach(function ( orgName ) {
         var orgPath = path.join(root, orgName);
 
-        fs.mkdir(orgPath, function () {
-            Object.keys(repos[orgName]).forEach(function ( repoName ) {
-                if ( !fs.existsSync(path.join(orgPath, repoName)) ) {
-                    exec('git', ['clone', '--progress', util.format('git@github.com:%s/%s.git', orgName, repoName)], {cwd: orgPath}, function ( error, stdout, stderr ) {
-                        console.log(orgName + '/' + repoName);
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            if ( !fs.existsSync(path.join(orgPath, repoName)) ) {
+                exec('git', [
+                    'clone',
+                    '--progress',
+                    util.format('git@github.com:%s/%s.git', orgName, repoName),
+                    path.join(orgName, repoName)
+                ], function ( error, stdout, stderr ) {
+                    console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
 
-                        if ( error ) {
-                            console.error(error.message);
-                            process.exitCode = 1;
-                        } else {
-                            console.log(stderr);
-                            console.log(stdout);
-                        }
-                    });
-                }
-            });
+                    if ( error ) {
+                        console.error(error.message);
+                        process.exitCode = 1;
+                    } else {
+                        stderr && console.log(stderr);
+                        stdout && console.log(stdout);
+                    }
+                });
+            }
         });
     });
 };
@@ -109,15 +133,18 @@ methods.clone = function () {
 methods.pull = function () {
     Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
-            exec('git', ['pull', '--progress'], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+            exec('git', [
+                'pull',
+                '--progress'
+            ], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
                 console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
 
                 if ( error ) {
                     console.error(error);
                     process.exitCode = 1;
                 } else {
-                    console.log(stdout);
-                    console.log(stderr);
+                    stderr && console.log(stderr);
+                    stdout && console.log(stdout);
                 }
             });
         });
@@ -128,19 +155,98 @@ methods.pull = function () {
 methods.push = function () {
     Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
-            exec('git', ['push', '--progress'], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+            exec('git', [
+                'push',
+                '--progress'
+            ], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
                 console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
 
                 if ( error ) {
                     console.error(error);
                     process.exitCode = 1;
                 } else {
-                    console.log(stderr);
-                    console.log(stdout);
+                    stderr && console.log(stderr);
+                    stdout && console.log(stdout);
                 }
             });
         });
     });
+};
+
+
+methods.install = function () {
+    //console.log(packages);
+    Object.keys(repos).forEach(function ( orgName ) {
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            var info = require(path.join(root, orgName, repoName, 'package.json')),
+                list = [];
+
+            //console.log(info.name);
+
+            Object.keys(info.dependencies || {}).forEach(function ( depName ) {
+                //if ( packages.indexOf(depName) === -1 ) {
+                if ( !isGlobalPackage(depName) ) {
+                    list.push(depName + '@' + info.dependencies[depName]);
+                }
+            });
+
+            Object.keys(info.devDependencies || {}).forEach(function ( depName ) {
+                //console.log(require.resolve(depName));
+                //if ( packages.indexOf(depName) === -1 ) {
+                if ( !isGlobalPackage(depName) ) {
+                    list.push(depName + '@' + info.devDependencies[depName]);
+                }
+            });
+
+            //console.log(list);
+            //return;
+
+            //list = list.join(' ');
+
+            if ( list.length ) {
+                exec('npm', [
+                    'install'
+                    //list
+                ].concat(list), {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+                    //console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
+
+                    if ( error ) {
+                        console.error(error);
+                        process.exitCode = 1;
+                    } else {
+                        stderr && console.log(stderr);
+                        stdout && console.log(stdout);
+                    }
+                });
+            }
+        });
+    });
+
+
+    /*var npm = require('npm');
+
+    console.log(npm);
+
+    npm.load(function ( error ) {
+        if ( error ) {
+            console.log(error);
+            return;
+        }
+
+        npm.commands.install(['ip'], true, function ( error, data ) {
+            if ( error ) {
+                console.log(error);
+                return;
+            }
+
+            console.log(data);
+        });
+
+        // npm.on('log', function ( message ) {
+        //     // log installation progress
+        //     console.log(message);
+        // });
+    });*/
 };
 
 
