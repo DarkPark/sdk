@@ -79,15 +79,19 @@ var fs       = require('fs'),
             'plugin-weinre': 'stb-plugin-weinre'
         }
     },
-    root = process.cwd();
+    root = process.cwd(),
+    home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'],
+    libs = path.join(home, '.node_libraries');
 
 
 function isGlobalPackage ( name ) {
     try {
         if ( require.resolve(name) ) {
+            //console.log(name + ' found');
             return true;
         }
     } catch ( e ) {
+        //console.log(name + ' not found!');
         return false;
     }
 }
@@ -199,6 +203,9 @@ methods.install = function () {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
             var list = getDependencies(path.join(root, orgName, repoName, 'package.json'));
 
+            //console.log(list);
+            //return;
+
             if ( list.length ) {
                 exec('npm', ['install'].concat(list), {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
                     if ( error ) {
@@ -212,6 +219,37 @@ methods.install = function () {
             }
         });
     });
+
+    /*var list = [],
+        dest = path.join(home, '.node_modules');
+
+    Object.keys(repos).forEach(function ( orgName ) {
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            list = list.concat(getDependencies(path.join(root, orgName, repoName, 'package.json')));
+        });
+    });
+
+    list = list.reduce(function ( a, b ) {
+        if ( a.indexOf(b) < 0 ) {
+            a.push(b);
+        }
+
+        return a;
+    }, []);
+
+    fs.mkdir(dest, function () {
+        exec('npm', ['install'].concat(list), {cwd: dest}, function ( error, stdout, stderr ) {
+            if ( error ) {
+                console.error(error);
+                process.exitCode = 1;
+            } else {
+                stderr && console.log(stderr);
+                stdout && console.log(stdout);
+            }
+        });
+    });
+
+    console.log(list.sort());*/
 };
 
 
@@ -242,13 +280,11 @@ methods.outdated = function () {
 methods.reset = function () {
     Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
-            exec(
-                'rm',
-                ['-rf', './node_modules'],
-                {cwd: path.join(root, orgName, repoName)},
-                function ( error, stdout, stderr ) {
-                    console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
+            var dir = path.join(root, orgName, repoName, './node_modules');
 
+            if ( fs.existsSync(dir) ) {
+                console.log('-' + dir);
+                exec('rm', ['-rf', dir], function ( error, stdout, stderr ) {
                     if ( error ) {
                         console.error(error);
                         process.exitCode = 1;
@@ -256,8 +292,8 @@ methods.reset = function () {
                         stderr && console.log(stderr);
                         stdout && console.log(stdout);
                     }
-                }
-            );
+                });
+            }
         });
     });
 };
@@ -282,6 +318,39 @@ methods.reset = function () {
         });
     });
 };*/
+
+
+methods.link = function () {
+    fs.mkdir(libs, function () {
+        Object.keys(repos).forEach(function ( orgName ) {
+            Object.keys(repos[orgName]).forEach(function ( repoName ) {
+                var pkgName = repos[orgName][repoName],
+                    dstName = path.join(root, orgName, repoName),
+                    srcName = path.join(libs, pkgName || '');
+
+                if ( pkgName && !fs.existsSync(srcName) ) {
+                    fs.symlinkSync(dstName, srcName, 'dir');
+                    console.log('+' + srcName + ' -> ' + dstName);
+                }
+            });
+        });
+    });
+};
+
+
+methods.unlink = function () {
+    Object.keys(repos).forEach(function ( orgName ) {
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            var pkgName = repos[orgName][repoName],
+                srcName = path.join(libs, pkgName || '');
+
+            if ( pkgName && fs.existsSync(srcName) ) {
+                fs.unlinkSync(srcName);
+                console.log('-' + srcName);
+            }
+        });
+    });
+};
 
 
 // exec given command
