@@ -1,8 +1,8 @@
 .idea
 node_modules
-cjs/*
-!cjs/.eslintrc.js
-spa/*
-!spa/.eslintrc.js
-stb/*
-!stb/.eslintrc.js
+cjssdk/*
+!cjssdk/.eslintrc.js
+spasdk/*
+!spasdk/.eslintrc.js
+stbsdk/*
+!stbsdk/.eslintrc.js
