@@ -18,24 +18,5 @@
         "mount": "./run.sh mount",
         "umount": "./run.sh umount"
     },
-    "dependencies": {
-        "cjs-async": "cjssdk/async",
-        "chokidar": "1.*.*",
-        "extend": "3.*.*",
-        "jade": "1.*.*",
-        "code-proxy": "1.*.*",
-        "gettext-parser": "1.*.*",
-        "gremlins.js": "marmelab/gremlins.js",
-        "node-notifier": "4.*.*",
-        "ip": "1.*.*",
-        "node-static": "0.*.*",
-        "node-sass": "3.*.*",
-        "open": "0.*.*",
-        "ssh2": "0.*.*",
-        "tty-colors": "0.*.*",
-        "tiny-lr": "0.*.*",
-        "webpack": "1.*.*",
-        "weinre": "2.0.0-pre-I0Z7U9OV"
-    },
     "license": "GPL-3.0"
 }
