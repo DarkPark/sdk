@@ -199,7 +199,7 @@ methods.push = function () {
 
 
 methods.install = function () {
-    Object.keys(repos).forEach(function ( orgName ) {
+    /*Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
             var list = getDependencies(path.join(root, orgName, repoName, 'package.json'));
 
@@ -218,10 +218,10 @@ methods.install = function () {
                 });
             }
         });
-    });
+    });*/
 
-    /*var list = [],
-        dest = path.join(home, '.node_modules');
+    var list = [];
+        //dest = path.join(home, '.node_modules');
 
     Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
@@ -235,21 +235,21 @@ methods.install = function () {
         }
 
         return a;
-    }, []);
+    }, []).sort();
 
-    fs.mkdir(dest, function () {
-        exec('npm', ['install'].concat(list), {cwd: dest}, function ( error, stdout, stderr ) {
-            if ( error ) {
-                console.error(error);
-                process.exitCode = 1;
-            } else {
-                stderr && console.log(stderr);
-                stdout && console.log(stdout);
-            }
-        });
+    //fs.mkdir(dest, function () {
+    exec('npm', ['install'].concat(list), function ( error, stdout, stderr ) {
+        if ( error ) {
+            console.error(error);
+            process.exitCode = 1;
+        } else {
+            stderr && console.log(stderr);
+            stdout && console.log(stdout);
+        }
     });
+    //});
 
-    console.log(list.sort());*/
+    //console.log(list);/**/
 };
 
 
@@ -321,7 +321,7 @@ methods.reset = function () {
 
 
 methods.link = function () {
-    fs.mkdir(libs, function () {
+    /*fs.mkdir(libs, function () {
         Object.keys(repos).forEach(function ( orgName ) {
             Object.keys(repos[orgName]).forEach(function ( repoName ) {
                 var pkgName = repos[orgName][repoName],
@@ -333,6 +333,19 @@ methods.link = function () {
                     console.log('+' + srcName + ' -> ' + dstName);
                 }
             });
+        });
+    });*/
+
+    Object.keys(repos).forEach(function ( orgName ) {
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            var pkgName = repos[orgName][repoName],
+                dstName = path.join(root, orgName, repoName),
+                srcName = path.join(root, 'node_modules', pkgName || '');
+
+            if ( pkgName && !fs.existsSync(srcName) ) {
+                fs.symlinkSync(dstName, srcName, 'dir');
+                console.log('+' + srcName + ' -> ' + dstName);
+            }
         });
     });
 };
