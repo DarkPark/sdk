@@ -7,7 +7,7 @@ SDK deployment management
 Install optional global dependencies:
 
 ```bash
-sudo npm install -g mocha should eslint gulp-cli jsdoc
+sudo npm install -g mocha should eslint jsdoc extend
 ```
 
 Clone all repositories:
