@@ -34,14 +34,6 @@ spa-develop:main
 src:main
 
 
-
-- генерировать карту подключенных файлов для webpack и использовать ее в sass
-~ разорвать все связи между плагинами (осталось livereload+webpack)
-+ мета-пакет с глобальной (локальной) установкой
-~ async: remove func names (fail in release)
-консоль в системной вкладке
-
-
 require('cjs-validator')(
     {value: this, rules: {type: 'object'}, message: 'must be constructed via new', context: __filename},
     {value: this, rules: {string: {minSize: 1}}, context: __filename},
