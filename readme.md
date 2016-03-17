@@ -7,28 +7,46 @@ SDK deployment management
 Install optional global dependencies:
 
 ```bash
-sudo npm install -g mocha should eslint jsdoc extend
+sudo npm install -g eslint jsdoc
 ```
 
 Clone all repositories:
 
 ```bash
-./run.sh clone
+npm run-script clone
 ```
 
 Update all repositories:
 
 ```bash
-./run.sh pull
+npm run-script pull
 ```
 
 Push commits for all repositories:
 
 ```bash
-./run.sh push
+npm run-script push
 ```
 
-List all packages with versions:
+Install dependencies for all repositories:
+
+```bash
+npm run-script install
+```
+
+Create symbolic links for all repositories:
+
+```bash
+npm run-script link
+```
+
+Remove symbolic links for all repositories:
+
+```bash
+npm run-script unlink
+```
+
+??? List all packages with versions:
 
 ```bash
 ./run.sh version

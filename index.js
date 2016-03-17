@@ -102,13 +102,14 @@ function getDependencies ( pkgFile ) {
         list = [];
 
     Object.keys(info.dependencies || {}).forEach(function ( depName ) {
-        if ( !isGlobalPackage(depName) ) {
+        //if ( !isGlobalPackage(depName) ) {
+        if ( packages.indexOf(depName) === -1 ) {
             list.push(depName + '@' + info.dependencies[depName]);
         }
     });
 
     Object.keys(info.devDependencies || {}).forEach(function ( depName ) {
-        if ( !isGlobalPackage(depName) ) {
+        if ( packages.indexOf(depName) === -1 ) {
             list.push(depName + '@' + info.devDependencies[depName]);
         }
     });
@@ -117,13 +118,13 @@ function getDependencies ( pkgFile ) {
 }
 
 
-/*Object.keys(repos).forEach(function ( orgName ) {
+Object.keys(repos).forEach(function ( orgName ) {
     Object.keys(repos[orgName]).forEach(function ( repoName ) {
         var name = repos[orgName][repoName];
 
         name && packages.push(name);
     });
-});*/
+});/**/
 
 
 methods.clone = function () {
@@ -246,10 +247,10 @@ methods.install = function () {
             stderr && console.log(stderr);
             stdout && console.log(stdout);
         }
-    });
+    });/**/
     //});
 
-    //console.log(list);/**/
+    console.log(list);/**/
 };
 
 
@@ -336,16 +337,18 @@ methods.link = function () {
         });
     });*/
 
-    Object.keys(repos).forEach(function ( orgName ) {
-        Object.keys(repos[orgName]).forEach(function ( repoName ) {
-            var pkgName = repos[orgName][repoName],
-                dstName = path.join(root, orgName, repoName),
-                srcName = path.join(root, 'node_modules', pkgName || '');
+    fs.mkdir(path.join(root, 'node_modules'), function () {
+        Object.keys(repos).forEach(function ( orgName ) {
+            Object.keys(repos[orgName]).forEach(function ( repoName ) {
+                var pkgName = repos[orgName][repoName],
+                    dstName = path.join(root, orgName, repoName),
+                    srcName = path.join(root, 'node_modules', pkgName || '');
 
-            if ( pkgName && !fs.existsSync(srcName) ) {
-                fs.symlinkSync(dstName, srcName, 'dir');
-                console.log('+' + srcName + ' -> ' + dstName);
-            }
+                if ( pkgName && !fs.existsSync(srcName) ) {
+                    fs.symlinkSync(dstName, srcName, 'dir');
+                    console.log('+' + srcName + ' -> ' + dstName);
+                }
+            });
         });
     });
 };
@@ -355,7 +358,7 @@ methods.unlink = function () {
     Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
             var pkgName = repos[orgName][repoName],
-                srcName = path.join(libs, pkgName || '');
+                srcName = path.join(root, 'node_modules', pkgName || '');
 
             if ( pkgName && fs.existsSync(srcName) ) {
                 fs.unlinkSync(srcName);
