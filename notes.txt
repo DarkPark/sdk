@@ -88,3 +88,56 @@ app.route(page.previous);
 
 // доступ к текущему активному элементу:
 app.activePage.activeComponent
+
+
+###################################################
+
+/*
+    option A
+    (almost like it is now)
+*/
+
+// add listener
+emitter.on('click', function ( event ) { /* ... */ });
+
+// add listener to be triggered only once
+emitter.once('click', function ( event ) { /* ... */ });
+
+// clear all listeners for all events
+emitter.events = {};
+
+// clear all listeners for some specific event
+emitter.events.click = [];
+
+// remove some specific callback for a specific event
+emitter.off('click', someCallback);
+
+// notify listeners
+emitter.emit('click');
+
+
+/*
+    option B
+    (only one method to add listeners - "on")
+*/
+
+// add simple listener
+emitter.on('click', function ( event ) { /* ... */ });
+
+// add listener to be triggered only once
+emitter.on('click', function ( event ) { /* ... */ }, {once: true});
+
+// add listener to be triggered only once with given context
+emitter.on('click', function ( event ) { /* ... */ }, {once: true, context: someContext});
+
+// clear all listeners for all events
+emitter.events = {};
+
+// clear all listeners for some specific event
+emitter.events.click = [];
+
+// remove some specific callback for a specific event
+emitter.off('click', someCallback);
+
+// notify listeners
+emitter.emit('click');
