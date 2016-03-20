@@ -369,6 +369,35 @@ methods.unlink = function () {
 };
 
 
+methods.sass = function () {
+    //var list = [];
+
+    Object.keys(repos).forEach(function ( orgName ) {
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            var info = require(path.join(root, orgName, repoName, 'package.json'));
+
+            if ( info.scripts && info.scripts.sass ) {
+                console.log(info.name);
+                //console.log(info.scripts.sass);
+                //list.push(info.scripts.sass);
+                /*exec('rm', ['-rf', dir], function ( error, stdout, stderr ) {
+                    if ( error ) {
+                        console.error(error);
+                        process.exitCode = 1;
+                    } else {
+                        stderr && console.log(stderr);
+                        stdout && console.log(stdout);
+                    }
+                });*/
+            }
+
+        });
+    });
+
+    //console.log(list);
+};
+
+
 // exec given command
 if ( methods[process.argv[2]] ) {
     methods[process.argv[2]]();
