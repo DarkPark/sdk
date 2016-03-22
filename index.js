@@ -51,7 +51,8 @@ var fs       = require('fs'),
             'plugin-wamp': 'spa-plugin-wamp',
             'plugin-webpack': 'spa-plugin-webpack',
             'plugin-webui': 'spa-plugin-webui',
-            'plugin-zip': 'spa-plugin-zip'
+            'plugin-zip': 'spa-plugin-zip',
+            'wamp': 'spa-wamp'
         },
         stbsdk: {
             'app': 'stb-app',
