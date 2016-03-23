@@ -26,7 +26,7 @@ var fs       = require('fs'),
         spasdk: {
             'app': 'spa-app',
             'boilerplate': null,
-            'develop': 'spa-develop',
+            //'develop': 'spa-develop',
             'dom': 'spa-dom',
             'gettext': 'spa-gettext',
             'preloader': 'spa-preloader',
