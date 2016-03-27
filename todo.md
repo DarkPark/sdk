@@ -8,3 +8,4 @@ Tasks and plans
 - [ ] add recursive event bubbling in spa-app keydown
 - [ ] break hardcoded connection between livereload and webpack
 - [ ] implement webui plugin
+- [ ] webui: provide persistent wamp connection
