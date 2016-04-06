@@ -10,3 +10,9 @@ Tasks and plans
 - [ ] add recursive event bubbling in spa-app keydown
 - [ ] break hardcoded connection between livereload and webpack
 - [ ] implement webui plugin
+- [ ] implement cjs-property-watcher
+
+
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/watch
+https://github.com/zhibirc/2WayDataBinding
