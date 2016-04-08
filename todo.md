@@ -9,7 +9,8 @@ Tasks and plans
 - [ ] fix async: pass both array and object to method
 - [ ] add recursive event bubbling in spa-app keydown
 - [ ] break hardcoded connection between livereload and webpack
-- [ ] implement webui plugin
+- [x] implement webui plugin
+- [ ] webui: implement app component list with search and property viewer
 - [ ] implement cjs-property-watcher
 
 
