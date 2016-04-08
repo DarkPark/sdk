@@ -23,6 +23,9 @@ var fs       = require('fs'),
             'wamp': 'cjs-wamp',
             'eslint-config': 'cjs-eslint-config'
         },
+        magsdk: {
+            'eslint-config': 'mag-eslint-config'
+        },
         spasdk: {
             'app': 'spa-app',
             'boilerplate': null,
