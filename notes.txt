@@ -141,3 +141,13 @@ emitter.off('click', someCallback);
 
 // notify listeners
 emitter.emit('click');
+
+
+
+var obj = {
+    name: ''
+};
+
+watch(obj, 'name', function () {
+
+});
