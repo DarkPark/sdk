@@ -15,13 +15,14 @@ var fs       = require('fs'),
         cjssdk: {
             'async': 'cjs-async',
             'emitter': 'cjs-emitter',
+            'eslint-config': 'cjs-eslint-config',
             'format': 'cjs-format',
             'model': 'cjs-model',
+            'property-watcher': 'cjs-property-watcher',
             'query': 'cjs-query',
-            'uri': 'cjs-uri',
             'runner': 'cjs-runner',
-            'wamp': 'cjs-wamp',
-            'eslint-config': 'cjs-eslint-config'
+            'uri': 'cjs-uri',
+            'wamp': 'cjs-wamp'
         },
         magsdk: {
             'eslint-config': 'mag-eslint-config'
