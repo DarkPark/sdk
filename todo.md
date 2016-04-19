@@ -13,3 +13,4 @@ Tasks and plans
 - [ ] fix async: pass both array and object to method
 - [ ] add recursive event bubbling in spa-app keydown
 - [ ] break hardcoded connection between livereload and webpack
+- [ ] investigate and rework CSS handling approach (OOCSS, ACSS, BEM, SMACSS, ...)
