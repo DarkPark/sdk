@@ -14,3 +14,4 @@ Tasks and plans
 - [ ] add recursive event bubbling in spa-app keydown
 - [ ] break hardcoded connection between livereload and webpack
 - [ ] investigate and rework CSS handling approach (OOCSS, ACSS, BEM, SMACSS, ...)
+- [ ] rework spa/stb app module
