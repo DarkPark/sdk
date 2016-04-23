@@ -15,3 +15,4 @@ Tasks and plans
 - [ ] break hardcoded connection between livereload and webpack
 - [ ] investigate and rework CSS handling approach (OOCSS, ACSS, BEM, SMACSS, ...)
 - [ ] rework spa/stb app module
+- [ ] add tests
