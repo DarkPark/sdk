@@ -16,3 +16,4 @@ Tasks and plans
 - [ ] investigate and rework CSS handling approach (OOCSS, ACSS, BEM, SMACSS, ...)
 - [ ] rework spa/stb app module
 - [ ] add tests
+- [ ] rework spasdk/stbsdk commands to support user configs
