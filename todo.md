@@ -17,4 +17,4 @@ Tasks and plans
 - [ ] rework spa/stb app module
 - [ ] add tests
 - [ ] rework spasdk/stbsdk commands to support user configs
-- [ ] clean and publish repos
+- [ ] clean and publish repos 
