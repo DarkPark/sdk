@@ -64,6 +64,15 @@ Unbind all bind packages in the target project:
 sudo ./run.sh unbind [path to the project]
 ```
 
+Link main packages:
+
+```sh
+sudo ln -s /home/dp/Projects/sdk/spasdk/spasdk /usr/lib/node_modules/spasdk
+sudo ln -s /home/dp/Projects/sdk/stbsdk/stbsdk /usr/lib/node_modules/stbsdk
+sudo ln -s /usr/lib/node_modules/spasdk/bin/cli.js /usr/bin/spasdk
+sudo ln -s /usr/lib/node_modules/stbsdk/bin/cli.js /usr/bin/stbsdk
+```
+
 
 ## Contribution ##
 
