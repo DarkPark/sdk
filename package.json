@@ -6,7 +6,10 @@
         "name": "Stanislav Kalashnik",
         "email": "darkpark.main@gmail.com"
     },
-    "repository": "darkpark/sdk",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/darkpark/sdk.git"
+    },
     "scripts": {
         "clone": "node index.js clone",
         "pull": "node index.js pull",
