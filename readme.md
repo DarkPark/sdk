@@ -66,7 +66,7 @@ sudo ./run.sh unbind [path to the project]
 
 Link main packages:
 
-```sh
+```bash
 sudo ln -sr ./spasdk/spasdk /usr/lib/node_modules/spasdk
 sudo ln -sr ./stbsdk/stbsdk /usr/lib/node_modules/stbsdk
 sudo ln -s /usr/lib/node_modules/spasdk/bin/cli.js /usr/bin/spasdk
