@@ -23,5 +23,31 @@
         "mount": "./run.sh mount",
         "umount": "./run.sh umount"
     },
+    "dependencies": {
+        "bufferutil": "1.*.*",
+        "chokidar": "1.*.*",
+        "code-proxy": "1.*.*",
+        "commander": "2.*.*",
+        "debug": "2.*.*",
+        "extend": "3.*.*",
+        "gettext-parser": "1.*.*",
+        "ip": "1.*.*",
+        "jade": "1.*.*",
+        "json-loader": "0.*.*",
+        "langs": "1.*.*",
+        "mocha": "2.*.*",
+        "node-notifier": "4.*.*",
+        "node-sass": "3.*.*",
+        "node-static": "0.*.*",
+        "open": "0.*.*",
+        "require-nocache": "1.*.*",
+        "should": "9.*.*",
+        "ssh2": "0.*.*",
+        "tiny-lr": "0.*.*",
+        "utf-8-validate": "1.*.*",
+        "webpack": "1.*.*",
+        "weinre": "2.0.0-pre-I0Z7U9OV",
+        "ws": "1.*.*"
+    },
     "license": "GPL-3.0"
 }
