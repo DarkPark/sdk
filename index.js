@@ -8,6 +8,7 @@
 var fs       = require('fs'),
     path     = require('path'),
     util     = require('util'),
+//    util     = require('cjs-async'),
     exec     = require('child_process').execFile,
     methods  = {},
     packages = [],
@@ -17,6 +18,7 @@ var fs       = require('fs'),
             'emitter': 'cjs-emitter',
             'eslint-config': 'cjs-eslint-config',
             'format': 'cjs-format',
+            'iso-639': 'cjs-iso-639',
             'model': 'cjs-model',
             'property-watcher': 'cjs-property-watcher',
             'query': 'cjs-query',
@@ -62,7 +64,7 @@ var fs       = require('fs'),
         stbsdk: {
             'app': 'stb-app',
             'boilerplate': null,
-            'develop': 'stb-develop',
+            //'develop': 'stb-develop',
             'referrer': 'stb-referrer',
             'rc': 'stb-rc',
             'eslint-config': 'stb-eslint-config',
@@ -401,4 +403,6 @@ methods.sass = function () {
 // exec given command
 if ( methods[process.argv[2]] ) {
     methods[process.argv[2]]();
+} else {
+    console.log('Available commands:', Object.keys(methods).join(', '));
 }
