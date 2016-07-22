@@ -24,6 +24,7 @@
         "umount": "./run.sh umount"
     },
     "dependencies": {
+        "gremlins.js": "marmelab/gremlins.js",
         "bufferutil": "1.*.*",
         "chokidar": "1.*.*",
         "code-proxy": "1.*.*",
