@@ -360,7 +360,7 @@ methods.link = function () {
     fs.mkdir(path.join(root, 'node_modules'), function () {
         Object.keys(repos).forEach(function ( orgName ) {
             Object.keys(repos[orgName]).forEach(function ( repoName ) {
-                var pkgName = repos[orgName][repoName],
+                var pkgName = repos[orgName][repoName].name,
                     dstName = path.join(root, orgName, repoName),
                     srcName = path.join(root, 'node_modules', pkgName || '');
 
@@ -377,7 +377,7 @@ methods.link = function () {
 methods.unlink = function () {
     Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
-            var pkgName = repos[orgName][repoName],
+            var pkgName = repos[orgName][repoName].name,
                 srcName = path.join(root, 'node_modules', pkgName || '');
 
             if ( pkgName && fs.existsSync(srcName) ) {
