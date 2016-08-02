@@ -32,6 +32,7 @@ var fs       = require('fs'),
             'eslint-config':         {name: 'mag-eslint-config', url: 'git@github.com:magsdk/eslint-config.git'},
             'component-footer':      {name: 'mag-component-footer', url: 'git@192.168.1.222:/web/magsdk/component-footer.git'},
             'component-radio-list':  {name: 'mag-component-radio-list', url: 'git@192.168.1.222:/web/magsdk/component-radio-list.git'},
+            'component-layout':      {name: 'mag-component-layout', url: 'git@192.168.1.222:/web/magsdk/component-layout.git'},
             'component-layout-list': {name: 'mag-component-layout-list', url: 'git@192.168.1.222:/web/magsdk/component-layout-list.git'},
             'component-panel':       {name: 'mag-component-panel', url: 'git@192.168.1.222:/web/magsdk/component-panel.git'},
             'component-panel-set':   {name: 'mag-component-panel-set', url: 'git@192.168.1.222:/web/magsdk/component-panel-set.git'}
