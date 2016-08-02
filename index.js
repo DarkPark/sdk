@@ -27,6 +27,7 @@ var fs       = require('fs'),
             'wamp':             {name: 'cjs-wamp', url: 'git@github.com:cjssdk/wamp.git'}
         },
         magsdk: {
+            'app':                   {name: 'mag-app', url: 'git@192.168.1.222:/web/magsdk/app.git'},
             'apps-base':             {name: 'mag-apps-base', url: 'git@github.com:magsdk/apps-base.git'},
             'apps-extra':            {name: 'mag-apps-extra', url: 'git@github.com:magsdk/apps-extra.git'},
             'eslint-config':         {name: 'mag-eslint-config', url: 'git@github.com:magsdk/eslint-config.git'},
