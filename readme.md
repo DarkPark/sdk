@@ -69,8 +69,10 @@ Link main packages:
 ```bash
 sudo ln -sr ./spasdk/spasdk /usr/lib/node_modules/spasdk
 sudo ln -sr ./stbsdk/stbsdk /usr/lib/node_modules/stbsdk
+sudo ln -sr ./magsdk/magsdk /usr/lib/node_modules/magsdk
 sudo ln -s /usr/lib/node_modules/spasdk/bin/cli.js /usr/bin/spasdk
 sudo ln -s /usr/lib/node_modules/stbsdk/bin/cli.js /usr/bin/stbsdk
+sudo ln -s /usr/lib/node_modules/magsdk/bin/cli.js /usr/bin/magsdk
 ```
 
 

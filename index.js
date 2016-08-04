@@ -37,7 +37,9 @@ var fs       = require('fs'),
             'component-layout-list': {name: 'mag-component-layout-list', url: 'git@192.168.1.222:/web/magsdk/component-layout-list.git'},
             'component-modal':       {name: 'mag-component-modal', url: 'git@192.168.1.222:/web/magsdk/component-modal.git'},
             'component-panel':       {name: 'mag-component-panel', url: 'git@192.168.1.222:/web/magsdk/component-panel.git'},
-            'component-panel-set':   {name: 'mag-component-panel-set', url: 'git@192.168.1.222:/web/magsdk/component-panel-set.git'}
+            'component-panel-set':   {name: 'mag-component-panel-set', url: 'git@192.168.1.222:/web/magsdk/component-panel-set.git'},
+            'plugin-css':            {name: 'mag-plugin-css', url: 'git@192.168.1.222:/web/magsdk/plugin-css.git'},
+            'magsdk':                {name: 'magsdk', url: 'git@192.168.1.222:/web/magsdk/magsdk.git'}
         },
         spasdk: {
             'app':                 {name: 'spa-app', url: 'git@github.com:spasdk/app.git'},
