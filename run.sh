@@ -35,7 +35,7 @@ spa=(
         plugin-static
         plugin-wamp
         plugin-webpack
-        plugin-webui
+        webui
         plugin-zip
 )
 
@@ -331,7 +331,7 @@ case "$1" in
 
     install)
         (cd spa/boilerplate/        && npm install)
-        (cd spa/plugin-webui/       && npm install)
+        (cd spa/webui/              && npm install)
         (cd spa/spasdk/             && npm install)
         (cd stb/app/                && npm install)
         (cd stb/boilerplate/        && npm install)
@@ -347,7 +347,7 @@ case "$1" in
 
     update)
         (cd spa/boilerplate/        && npm update)
-        (cd spa/plugin-webui/       && npm update)
+        (cd spa/webui/              && npm update)
         (cd spa/spasdk/             && npm update)
         (cd stb/app/                && npm update)
         (cd stb/boilerplate/        && npm update)
@@ -363,7 +363,7 @@ case "$1" in
 
     outdated)
         (cd spa/boilerplate/        && npm outdated)
-        (cd spa/plugin-webui/       && npm outdated)
+        (cd spa/webui/              && npm outdated)
         (cd spa/spasdk/             && npm outdated)
         (cd stb/app/                && npm outdated)
         (cd stb/boilerplate/        && npm outdated)
@@ -379,7 +379,7 @@ case "$1" in
 
     mount)
         ./run.sh bind spa/boilerplate/
-        ./run.sh bind spa/plugin-webui/
+        ./run.sh bind spa/webui/
         ./run.sh bind spa/spasdk/
         ./run.sh bind stb/app/
         ./run.sh bind stb/boilerplate/
@@ -396,7 +396,7 @@ case "$1" in
 
     umount)
         ./run.sh unbind spa/boilerplate/
-        ./run.sh unbind spa/plugin-webui/
+        ./run.sh unbind spa/webui/
         ./run.sh unbind spa/spasdk/
         ./run.sh unbind stb/app/
         ./run.sh unbind stb/boilerplate/

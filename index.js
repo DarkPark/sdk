@@ -72,9 +72,9 @@ var fs       = require('fs'),
             'plugin-static':       {name: 'spa-plugin-static', url: 'git@github.com:spasdk/plugin-static.git'},
             'plugin-wamp':         {name: 'spa-plugin-wamp', url: 'git@github.com:spasdk/plugin-wamp.git'},
             'plugin-webpack':      {name: 'spa-plugin-webpack', url: 'git@github.com:spasdk/plugin-webpack.git'},
-            'plugin-webui':        {name: 'spa-plugin-webui', url: 'git@github.com:spasdk/plugin-webui.git'},
             'plugin-zip':          {name: 'spa-plugin-zip', url: 'git@github.com:spasdk/plugin-zip.git'},
-            'wamp':                {name: 'spa-wamp', url: 'git@github.com:spasdk/wamp.git'}
+            'wamp':                {name: 'spa-wamp', url: 'git@github.com:spasdk/wamp.git'},
+            'webui':               {name: 'spa-webui', url: 'git@github.com:spasdk/webui.git'}
         },
         stbsdk: {
             'app':                 {name: 'stb-app', url: 'git@github.com:stbsdk/app.git'},
