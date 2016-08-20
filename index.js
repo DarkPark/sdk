@@ -185,20 +185,23 @@ methods.clone = function () {
 methods.pull = function () {
     Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
-            exec('git', [
-                'pull',
-                '--progress'
-            ], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
-                console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
+            // apply only for existing repos
+            if ( fs.existsSync(path.join(root, orgName, repoName)) ) {
+                exec('git', [
+                    'pull',
+                    '--progress'
+                ], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+                    console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
 
-                if ( error ) {
-                    console.error(error);
-                    process.exitCode = 1;
-                } else {
-                    stderr && console.log(stderr);
-                    stdout && console.log(stdout);
-                }
-            });
+                    if ( error ) {
+                        console.error(error);
+                        process.exitCode = 1;
+                    } else {
+                        stderr && console.log(stderr);
+                        stdout && console.log(stdout);
+                    }
+                });
+            }
         });
     });
 };
@@ -207,20 +210,23 @@ methods.pull = function () {
 methods.push = function () {
     Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
-            exec('git', [
-                'push',
-                '--progress'
-            ], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
-                console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
+            // apply only for existing repos
+            if ( fs.existsSync(path.join(root, orgName, repoName)) ) {
+                exec('git', [
+                    'push',
+                    '--progress'
+                ], { cwd: path.join(root, orgName, repoName) }, function ( error, stdout, stderr ) {
+                    console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
 
-                if ( error ) {
-                    console.error(error);
-                    process.exitCode = 1;
-                } else {
-                    stderr && console.log(stderr);
-                    stdout && console.log(stdout);
-                }
-            });
+                    if ( error ) {
+                        console.error(error);
+                        process.exitCode = 1;
+                    } else {
+                        stderr && console.log(stderr);
+                        stdout && console.log(stdout);
+                    }
+                });
+            }
         });
     });
 };
