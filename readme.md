@@ -25,7 +25,7 @@ Get meta repo:
 
 ```bash
 git clone https://github.com/DarkPark/sdk.git
-# or for Github users
+# or for Github users with granted access
 git clone git@github.com:DarkPark/sdk.git
 cd sdk
 ```
