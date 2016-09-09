@@ -379,7 +379,7 @@ methods.link = function () {
         Object.keys(repos).forEach(function ( orgName ) {
             Object.keys(repos[orgName]).forEach(function ( repoName ) {
                 var pkgName = repos[orgName][repoName].name,
-                    dstName = path.join(root, orgName, repoName),
+                    dstName = path.join(__dirname, orgName, repoName),
                     srcName = path.join(root, 'node_modules', pkgName || '');
 
                 if ( pkgName && !fs.existsSync(srcName) ) {
