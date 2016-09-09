@@ -88,6 +88,49 @@ sudo ln -s /usr/lib/node_modules/magsdk/bin/cli.js /usr/bin/magsdk
 ```
 
 
+## Project creation ##
+
+Get a new project base (one of the following):
+
+```bash
+git clone https://github.com/spasdk/boilerplate.git my-project
+git clone https://github.com/stbsdk/boilerplate.git my-project
+git clone https://github.com/magsdk/boilerplate.git my-project
+```
+
+Move to the project dir and install all required dependencies:
+
+```bash
+cd my-project
+npm install
+```
+
+For a development deployment to omit dependencies installation and regular `npm update` checks
+it's possible to skip `npm install` and create symlinks:
+
+```bash
+node [path to this sdk repo index.js] link
+```
+
+Build and start services (one of the following):
+
+```bash
+spasdk
+stbsdk
+magsdk
+```
+
+Or for a development mode (one of the following):
+
+```bash
+DEBUG=* spasdk
+DEBUG=* stbsdk
+DEBUG=* magsdk
+```
+
+
+
+
 ## Outdated instructions ##
 
 Install dependencies for all repositories:
