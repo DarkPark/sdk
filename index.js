@@ -74,6 +74,7 @@ var fs       = require('fs'),
             'plugin-jade':         {name: 'spa-plugin-jade', url: 'git@github.com:spasdk/plugin-jade.git'},
             'plugin-livereload':   {name: 'spa-plugin-livereload', url: 'git@github.com:spasdk/plugin-livereload.git'},
             'plugin-sass':         {name: 'spa-plugin-sass', url: 'git@github.com:spasdk/plugin-sass.git'},
+            'plugin-ssh':          {name: 'spa-plugin-ssh', url: 'git@github.com:spasdk/plugin-ssh.git'},
             'plugin-static':       {name: 'spa-plugin-static', url: 'git@github.com:spasdk/plugin-static.git'},
             'plugin-wamp':         {name: 'spa-plugin-wamp', url: 'git@github.com:spasdk/plugin-wamp.git'},
             'plugin-webpack':      {name: 'spa-plugin-webpack', url: 'git@github.com:spasdk/plugin-webpack.git'},
@@ -378,13 +379,16 @@ methods.link = function () {
     fs.mkdir(path.join(root, 'node_modules'), function () {
         Object.keys(repos).forEach(function ( orgName ) {
             Object.keys(repos[orgName]).forEach(function ( repoName ) {
-                var pkgName = repos[orgName][repoName].name,
-                    dstName = path.join(__dirname, orgName, repoName),
-                    srcName = path.join(root, 'node_modules', pkgName || '');
+                // apply only for existing repos
+                if ( fs.existsSync(path.join(root, orgName, repoName)) ) {
+                    var pkgName = repos[orgName][repoName].name,
+                        dstName = path.join(__dirname, orgName, repoName),
+                        srcName = path.join(root, 'node_modules', pkgName || '');
 
-                if ( pkgName && !fs.existsSync(srcName) ) {
-                    fs.symlinkSync(dstName, srcName, 'dir');
-                    console.log('+' + srcName + ' -> ' + dstName);
+                    if ( pkgName && !fs.existsSync(srcName) ) {
+                        fs.symlinkSync(dstName, srcName, 'dir');
+                        console.log('+' + srcName + ' -> ' + dstName);
+                    }
                 }
             });
         });
