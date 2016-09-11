@@ -379,16 +379,18 @@ methods.link = function () {
     fs.mkdir(path.join(root, 'node_modules'), function () {
         Object.keys(repos).forEach(function ( orgName ) {
             Object.keys(repos[orgName]).forEach(function ( repoName ) {
-                // apply only for existing repos
-                if ( fs.existsSync(path.join(root, orgName, repoName)) ) {
-                    var pkgName = repos[orgName][repoName].name,
-                        dstName = path.join(__dirname, orgName, repoName),
-                        srcName = path.join(root, 'node_modules', pkgName || '');
+                var pkgName = repos[orgName][repoName].name,
+                    dstName = path.join(__dirname, orgName, repoName),
+                    srcName = path.join(root, 'node_modules', pkgName || '');
 
+                // apply only for existing repos
+                if ( fs.existsSync(dstName) ) {
                     if ( pkgName && !fs.existsSync(srcName) ) {
                         fs.symlinkSync(dstName, srcName, 'dir');
                         console.log('+' + srcName + ' -> ' + dstName);
                     }
+                } else {
+                    console.log('!' + dstName + ' (missing repo)');
                 }
             });
         });
