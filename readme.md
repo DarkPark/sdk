@@ -105,6 +105,13 @@ cd my-project
 npm install
 ```
 
+Replace git repository link with your own if necessary:
+
+```bash
+git remote remove origin
+git remote add origin [new repository address]
+```
+
 For a development deployment to omit dependencies installation and regular `npm update` checks
 it's possible to skip `npm install` and create symlinks:
 
