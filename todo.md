@@ -18,3 +18,5 @@ Tasks and plans
 - [ ] add tests
 - [ ] rework spasdk/stbsdk commands to support user configs
 - [ ] clean and publish repos
+- [ ] move spa-gettext to cjs-gettext
+- [ ] move spa-gettext to cjs-gettext
