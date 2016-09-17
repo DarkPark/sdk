@@ -18,7 +18,7 @@
         "link": "node index.js link",
         "unlink": "node index.js unlink",
         "sass": "node index.js sass",
-        "lint": "eslint ./**/*.js",
+        "lint": "node index.js lint",
         "update": "./run.sh update",
         "mount": "./run.sh mount",
         "umount": "./run.sh umount"
@@ -28,6 +28,7 @@
         "bufferutil": "1.*.*",
         "chokidar": "1.*.*",
         "code-proxy": "1.*.*",
+        "cjs-async": "cjssdk/async",
         "commander": "2.*.*",
         "debug": "2.*.*",
         "extend": "3.*.*",

@@ -8,7 +8,7 @@
 var fs       = require('fs'),
     path     = require('path'),
     util     = require('util'),
-//    util     = require('cjs-async'),
+    serial   = require('cjs-async/serial'),
     exec     = require('child_process').execFile,
     methods  = {},
     packages = [],
@@ -50,24 +50,21 @@ var fs       = require('fs'),
         spasdk: {
             'app':                 {name: 'spa-app', url: 'git@github.com:spasdk/app.git'},
             'boilerplate':         {name: null, url: 'git@github.com:spasdk/boilerplate.git'},
-            'dom':                 {name: 'spa-dom', url: 'git@github.com:spasdk/dom.git'},
-            'gettext':             {name: 'spa-gettext', url: 'git@github.com:spasdk/gettext.git'},
-            'preloader':           {name: 'spa-preloader', url: 'git@github.com:spasdk/preloader.git'},
-            'request':             {name: 'spa-request', url: 'git@github.com:spasdk/request.git'},
-            'eslint-config':       {name: 'spa-eslint-config', url: 'git@github.com:spasdk/eslint-config.git'},
             'component':           {name: 'spa-component', url: 'git@github.com:spasdk/component.git'},
             'component-button':    {name: 'spa-component-button', url: 'git@github.com:spasdk/component-button.git'},
             'component-checkbox':  {name: 'spa-component-checkbox', url: 'git@github.com:spasdk/component-checkbox.git'},
             'component-flicker':   {name: 'spa-component-flicker', url: 'git@github.com:spasdk/component-flicker.git'},
             'component-grid':      {name: 'spa-component-grid', url: 'git@github.com:spasdk/component-grid.git'},
-            'component-list':      {name: 'spa-component-list', url: 'git@github.com:spasdk/component-list.git'},
             'component-input':     {name: 'spa-component-input', url: 'git@github.com:spasdk/component-input.git'},
+            'component-list':      {name: 'spa-component-list', url: 'git@github.com:spasdk/component-list.git'},
             'component-modal':     {name: 'spa-component-modal', url: 'git@github.com:spasdk/component-modal.git'},
             'component-page':      {name: 'spa-component-page', url: 'git@github.com:spasdk/component-page.git'},
             'component-panel':     {name: 'spa-component-panel', url: 'git@github.com:spasdk/component-panel.git'},
-            'component-tab-item':  {name: 'spa-component-tab-item', url: 'git@github.com:spasdk/component-tab-item.git'},
             'component-scrollbar': {name: 'spa-component-scrollbar', url: 'git@github.com:spasdk/component-scrollbar.git'},
-            'spasdk':              {name: 'spasdk', url: 'git@github.com:spasdk/spasdk.git'},
+            'component-tab-item':  {name: 'spa-component-tab-item', url: 'git@github.com:spasdk/component-tab-item.git'},
+            'dom':                 {name: 'spa-dom', url: 'git@github.com:spasdk/dom.git'},
+            'eslint-config':       {name: 'spa-eslint-config', url: 'git@github.com:spasdk/eslint-config.git'},
+            'gettext':             {name: 'spa-gettext', url: 'git@github.com:spasdk/gettext.git'},
             'plugin':              {name: 'spa-plugin', url: 'git@github.com:spasdk/plugin.git'},
             'plugin-css':          {name: 'spa-plugin-css', url: 'git@github.com:spasdk/plugin-css.git'},
             'plugin-eslint':       {name: 'spa-plugin-eslint', url: 'git@github.com:spasdk/plugin-eslint.git'},
@@ -80,6 +77,9 @@ var fs       = require('fs'),
             'plugin-wamp':         {name: 'spa-plugin-wamp', url: 'git@github.com:spasdk/plugin-wamp.git'},
             'plugin-webpack':      {name: 'spa-plugin-webpack', url: 'git@github.com:spasdk/plugin-webpack.git'},
             'plugin-zip':          {name: 'spa-plugin-zip', url: 'git@github.com:spasdk/plugin-zip.git'},
+            'preloader':           {name: 'spa-preloader', url: 'git@github.com:spasdk/preloader.git'},
+            'request':             {name: 'spa-request', url: 'git@github.com:spasdk/request.git'},
+            'spasdk':              {name: 'spasdk', url: 'git@github.com:spasdk/spasdk.git'},
             'wamp':                {name: 'spa-wamp', url: 'git@github.com:spasdk/wamp.git'},
             'webui':               {name: 'spa-webui', url: 'git@github.com:spasdk/webui.git'}
         },
@@ -433,6 +433,60 @@ methods.sass = function () {
             }
 
         });
+    });
+};
+
+
+methods.lint = function () {
+    var tasks = [];
+
+    // prepare
+    Object.keys(repos).forEach(function ( orgName ) {
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            var uri  = path.join(root, orgName, repoName, 'package.json'),
+                info, cmd;
+
+            if ( fs.existsSync(uri) ) {
+                // package.json content
+                info = require(uri);
+
+                if ( info.scripts && info.scripts.lint ) {
+                    tasks.push(function ( callback ) {
+                        cmd = info.scripts.lint.split(' ');
+
+                        exec(cmd.shift(), cmd, {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+                        //exec('npm', ['run-script', 'lint'], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+                        //exec(info.scripts.lint, {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+                            //console.log(error);
+                            console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
+                            console.log('\u001b[31m' + stdout.trim() + '\u001b[0m\n');
+                            //console.log(stderr);
+                            /*console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
+                            //console.log(cmd);
+                            //console.log(path.join(root, orgName, repoName));
+
+                            if ( error ) {
+                                console.error(error);
+                                process.exitCode = 1;
+                            } else {
+                                stderr && console.log(stderr);
+                                stdout && console.log(stdout);
+                            }*/
+
+                            callback();
+                        });
+                    });
+                }
+            }
+        });
+    });
+
+    // run
+    serial(tasks, function ( error, results ) {
+        // if ( !error ) {
+        //     console.log(results);
+        // }
+        console.log('ok');
     });
 };
 
