@@ -3,11 +3,13 @@
  * @license GNU GENERAL PUBLIC LICENSE Version 3
  */
 
+/* eslint quote-props: off */
+
 'use strict';
 
 var fs       = require('fs'),
     path     = require('path'),
-    util     = require('util'),
+    //util     = require('util'),
     serial   = require('cjs-async/serial'),
     exec     = require('child_process').execFile,
     methods  = {},
@@ -65,6 +67,7 @@ var fs       = require('fs'),
             'dom':                 {name: 'spa-dom', url: 'git@github.com:spasdk/dom.git'},
             'eslint-config':       {name: 'spa-eslint-config', url: 'git@github.com:spasdk/eslint-config.git'},
             'gettext':             {name: 'spa-gettext', url: 'git@github.com:spasdk/gettext.git'},
+            'keys':                {name: 'spa-keys', url: 'git@github.com:spasdk/keys.git'},
             'plugin':              {name: 'spa-plugin', url: 'git@github.com:spasdk/plugin.git'},
             'plugin-css':          {name: 'spa-plugin-css', url: 'git@github.com:spasdk/plugin-css.git'},
             'plugin-eslint':       {name: 'spa-plugin-eslint', url: 'git@github.com:spasdk/plugin-eslint.git'},
@@ -87,7 +90,6 @@ var fs       = require('fs'),
             'app':                 {name: 'stb-app', url: 'git@github.com:stbsdk/app.git'},
             'boilerplate':         {name: null, url: 'git@github.com:stbsdk/boilerplate.git'},
             'referrer':            {name: 'stb-referrer', url: 'git@github.com:stbsdk/referrer.git'},
-            'rc':                  {name: 'stb-rc', url: 'git@github.com:stbsdk/rc.git'},
             'eslint-config':       {name: 'stb-eslint-config', url: 'git@github.com:stbsdk/eslint-config.git'},
             'component':           {name: 'stb-component', url: 'git@github.com:stbsdk/component.git'},
             'component-button':    {name: 'stb-component-button', url: 'git@github.com:stbsdk/component-button.git'},
@@ -103,6 +105,7 @@ var fs       = require('fs'),
             'shim-bind':           {name: 'stb-shim-bind', url: 'git@github.com:stbsdk/shim-bind.git'},
             'shim-frame':          {name: 'stb-shim-frame', url: 'git@github.com:stbsdk/shim-frame.git'},
             'stbsdk':              {name: 'stbsdk', url: 'git@github.com:stbsdk/stbsdk.git'},
+            'keys':                {name: 'stb-keys', url: 'git@github.com:stbsdk/keys.git'},
             'plugin-css':          {name: 'stb-plugin-css', url: 'git@github.com:stbsdk/plugin-css.git'},
             'plugin-proxy':        {name: 'stb-plugin-proxy', url: 'git@github.com:stbsdk/plugin-proxy.git'},
             'plugin-sass':         {name: 'stb-plugin-sass', url: 'git@github.com:stbsdk/plugin-sass.git'},
@@ -111,22 +114,22 @@ var fs       = require('fs'),
             'plugin-weinre':       {name: 'stb-plugin-weinre', url: 'git@github.com:stbsdk/plugin-weinre.git'}
         }
     },
-    root = process.cwd(),
-    home = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'],
-    libs = path.join(home, '.node_libraries');
+    root = process.cwd()/*,
+    home = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'],
+    libs = path.join(home, '.node_libraries')*/;
 
 
-function isGlobalPackage ( name ) {
-    try {
-        if ( require.resolve(name) ) {
-            //console.log(name + ' found');
-            return true;
-        }
-    } catch ( e ) {
-        //console.log(name + ' not found!');
-        return false;
-    }
-}
+// function isGlobalPackage ( name ) {
+//     try {
+//         if ( require.resolve(name) ) {
+//             //console.log(name + ' found');
+//             return true;
+//         }
+//     } catch ( e ) {
+//         //console.log(name + ' not found!');
+//         return false;
+//     }
+// }
 
 
 function getDependencies ( pkgFile ) {
@@ -222,7 +225,7 @@ methods.push = function () {
                 exec('git', [
                     'push',
                     '--progress'
-                ], { cwd: path.join(root, orgName, repoName) }, function ( error, stdout, stderr ) {
+                ], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
                     console.log('\u001b[32m' + orgName + '/' + repoName + '\u001b[0m');
 
                     if ( error ) {
@@ -310,7 +313,7 @@ methods.outdated = function () {
                         if ( line.indexOf('MISSING') === -1 ) {
                             console.log(line);
                         }
-                    })
+                    });
                 }
             });
         });
