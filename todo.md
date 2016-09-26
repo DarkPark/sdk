@@ -20,3 +20,4 @@ Tasks and plans
 - [ ] clean and publish repos
 - [ ] move spa-gettext to cjs-gettext
 - [ ] move spa-gettext to cjs-gettext
+- [ ] spa-wamp: add close method
