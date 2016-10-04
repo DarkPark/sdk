@@ -28,7 +28,6 @@
         "bufferutil": "1.*.*",
         "chokidar": "1.*.*",
         "code-proxy": "1.*.*",
-        "cjs-async": "cjssdk/async",
         "commander": "2.*.*",
         "debug": "2.*.*",
         "extend": "3.*.*",

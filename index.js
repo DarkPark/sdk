@@ -10,7 +10,6 @@
 var fs       = require('fs'),
     path     = require('path'),
     //util     = require('util'),
-    serial   = require('cjs-async/serial'),
     exec     = require('child_process').execFile,
     methods  = {},
     packages = [],
@@ -442,7 +441,8 @@ methods.sass = function () {
 
 
 methods.lint = function () {
-    var tasks = [];
+    var tasks  = [],
+        serial = require('cjs-async/serial');
 
     // prepare
     Object.keys(repos).forEach(function ( orgName ) {
