@@ -36,6 +36,7 @@
         "jade": "1.*.*",
         "json-loader": "0.*.*",
         "langs": "1.*.*",
+        "minimist": "1.*.*",
         "mocha": "3.*.*",
         "node-notifier": "4.*.*",
         "node-sass": "3.*.*",
