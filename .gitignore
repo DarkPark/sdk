@@ -1,6 +1,7 @@
 .idea
 node_modules
 cjssdk/*
+magcore/*
 magsdk/*
 spasdk/*
 stbsdk/*

@@ -30,8 +30,6 @@ var fs       = require('fs'),
         },
         magsdk: {
             'app':                   {name: 'mag-app', url: 'git@192.168.1.222:/web/magsdk/app.git'},
-            'apps-base':             {name: 'mag-apps-base', url: 'git@github.com:magsdk/apps-base.git'},
-            'apps-extra':            {name: 'mag-apps-extra', url: 'git@github.com:magsdk/apps-extra.git'},
             'boilerplate':           {name: null, url: 'git@192.168.1.222:/web/magsdk/boilerplate.git'},
             'data-cacher':           {name: 'mag-data-cacher', url: 'git@192.168.1.222:/web/magsdk/data-cacher.git'},
             'eslint-config':         {name: 'mag-eslint-config', url: 'git@github.com:magsdk/eslint-config.git'},
@@ -49,10 +47,10 @@ var fs       = require('fs'),
             'plugin-css':            {name: 'mag-plugin-css', url: 'git@192.168.1.222:/web/magsdk/plugin-css.git'},
             'magsdk':                {name: 'magsdk', url: 'git@192.168.1.222:/web/magsdk/magsdk.git'}
         },
-        // magcore: {
-        //     'apps-base':             {name: 'magcore-apps-base', url: 'git@github.com:magcore/apps-base.git'},
-        //     'apps-extra':            {name: 'magcore-apps-extra', url: 'git@github.com:magcore/apps-extra.git'}
-        // },
+        magcore: {
+            'stalker-apps-base':  {name: 'stalker-apps-base', url: 'git@github.com:magcore/stalker-apps-base.git'},
+            'stalker-apps-extra': {name: 'stalker-apps-extra', url: 'git@github.com:magcore/stalker-apps-extra.git'}
+        },
         spasdk: {
             'app':                    {name: 'spa-app', url: 'git@github.com:spasdk/app.git'},
             'boilerplate':            {name: null, url: 'git@github.com:spasdk/boilerplate.git'},
