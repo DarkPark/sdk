@@ -49,7 +49,8 @@ var fs       = require('fs'),
         },
         magcore: {
             'stalker-apps-base':  {name: 'stalker-apps-base', url: 'git@github.com:magcore/stalker-apps-base.git'},
-            'stalker-apps-extra': {name: 'stalker-apps-extra', url: 'git@github.com:magcore/stalker-apps-extra.git'}
+            'stalker-apps-extra': {name: 'stalker-apps-extra', url: 'git@github.com:magcore/stalker-apps-extra.git'},
+            'platforms':          {name: 'magcore-platforms', url: 'git@192.168.1.222:/web/magcore/platforms.git'}
         },
         spasdk: {
             'app':                    {name: 'spa-app', url: 'git@github.com:spasdk/app.git'},
