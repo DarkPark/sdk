@@ -116,6 +116,10 @@ var fs       = require('fs'),
             'plugin-ssh':          {name: 'stb-plugin-ssh', url: 'git@github.com:stbsdk/plugin-ssh.git'},
             'plugin-webpack':      {name: 'stb-plugin-webpack', url: 'git@github.com:stbsdk/plugin-webpack.git'},
             'plugin-weinre':       {name: 'stb-plugin-weinre', url: 'git@github.com:stbsdk/plugin-weinre.git'}
+        },
+        tznsdk: {
+            'app':  {name: 'tzn-app',  url: 'git@192.168.1.222:/web/tznsdk/app.git'},
+            'keys': {name: 'tzn-keys', url: 'git@192.168.1.222:/web/tznsdk/keys.git'}
         }
     },
     root = process.cwd()/*,
