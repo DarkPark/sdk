@@ -21,3 +21,31 @@ Tasks and plans
 - [ ] move spa-gettext to cjs-gettext
 - [ ] move spa-gettext to cjs-gettext
 - [ ] spa-wamp: add close method
+
+
+
+## For consideration ##
+
+### cjs-emitter ###
+
+New suggestions (http://collabedit.com/m68wv):
+
+```js
+// add listener
+emitter.on('click', function ( event ) { /* ... */ });
+
+// add listener to be triggered only once
+emitter.once('click', function ( event ) { /* ... */ });
+
+// clear all listeners for all events
+emitter.events = {};
+
+// clear all listeners for some specific event
+emitter.events.click = [];
+
+// remove some specific callback for a specific event
+emitter.off('click', someCallback);
+
+// notify listeners
+emitter.emit('click');
+```
