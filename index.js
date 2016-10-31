@@ -449,6 +449,49 @@ methods.sass = function () {
 };
 
 
+methods.check = function () {
+    var tasks  = [],
+        serial = require('cjs-async/serial');
+
+    Object.keys(repos).forEach(function ( orgName ) {
+        Object.keys(repos[orgName]).forEach(function ( repoName ) {
+            tasks.push(function ( callback ) {
+                var info = require(path.join(root, orgName, repoName, 'package.json'));
+
+                exec('git', ['rev-parse', 'HEAD'], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+                    if ( error ) {
+                        console.error(error);
+                        process.exitCode = 1;
+                    } else {
+                        console.log(info.name);
+                        console.log(stdout.trim());
+
+                        exec('npm', ['info', info.name, 'gitHead'], function ( error, stdout, stderr ) {
+                            if ( error ) {
+                                console.error(error);
+                                process.exitCode = 1;
+                            } else {
+                                stderr && console.log(stderr);
+                                stdout && console.log(stdout + '\n');
+                            }
+                            callback();
+                        });
+                    }
+                });
+            });
+        });
+    });
+
+    // run
+    serial(tasks, function ( error, results ) {
+        // if ( !error ) {
+        //     console.log(results);
+        // }
+        console.log('ok');
+    });
+};
+
+
 methods.lint = function () {
     var tasks  = [],
         serial = require('cjs-async/serial');

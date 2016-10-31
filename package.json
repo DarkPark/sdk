@@ -26,6 +26,7 @@
     "dependencies": {
         "gremlins.js": "marmelab/gremlins.js",
         "bufferutil": "1.*.*",
+        "cjs-async": "1.*.*",
         "chokidar": "1.*.*",
         "code-proxy": "1.*.*",
         "commander": "2.*.*",
