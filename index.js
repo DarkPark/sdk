@@ -455,39 +455,52 @@ methods.check = function () {
 
     Object.keys(repos).forEach(function ( orgName ) {
         Object.keys(repos[orgName]).forEach(function ( repoName ) {
-            tasks.push(function ( callback ) {
-                var info = require(path.join(root, orgName, repoName, 'package.json'));
+            // only packages
+            if ( repos[orgName][repoName].name ) {
+                tasks.push(function ( callback ) {
+                    var info = require(path.join(root, orgName, repoName, 'package.json')),
+                        gitRevision, npmRevision;
 
-                exec('git', ['rev-parse', 'HEAD'], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
-                    if ( error ) {
-                        console.error(error);
-                        process.exitCode = 1;
-                    } else {
-                        console.log(info.name);
-                        console.log(stdout.trim());
+                    exec('git', ['rev-parse', 'HEAD'], {cwd: path.join(root, orgName, repoName)}, function ( error, stdout, stderr ) {
+                        if ( error ) {
+                            console.error(error);
+                            process.exitCode = 1;
+                        } else {
+                            //console.log(info.name);
+                            gitRevision = stdout.trim();
 
-                        exec('npm', ['info', info.name, 'gitHead'], function ( error, stdout, stderr ) {
-                            if ( error ) {
-                                console.error(error);
-                                process.exitCode = 1;
-                            } else {
-                                stderr && console.log(stderr);
-                                stdout && console.log(stdout + '\n');
-                            }
-                            callback();
-                        });
-                    }
+                            exec('npm', ['--registry', 'http://npm.lpo.priv:4873', 'info', info.name, 'gitHead'], function ( error, stdout, stderr ) {
+                                if ( error ) {
+                                    console.error(error);
+                                    process.exitCode = 1;
+                                } else {
+                                    //stderr && console.log(stderr);
+                                    //console.log(stdout + '\n');
+                                    npmRevision = stdout.trim();
+
+                                    if ( gitRevision === npmRevision ) {
+                                        console.log('\u001b[32mup-to-date\u001b[0m\t%s\t%s\t%s\t%s',
+                                            npmRevision, gitRevision, info.version, info.name);
+                                    } else {
+                                        console.log('\u001b[31mout-of-date\u001b[0m\t%s\t%s\t%s\t%s',
+                                            npmRevision, gitRevision, info.version, info.name);
+                                    }
+                                }
+                                callback();
+                            });
+                        }
+                    });
                 });
-            });
+            }
         });
     });
 
     // run
     serial(tasks, function ( error, results ) {
-        // if ( !error ) {
-        //     console.log(results);
-        // }
-        console.log('ok');
+        /*if ( !error ) {
+            console.log(results);
+        }
+        //console.log('ok');/**/
     });
 };
 
