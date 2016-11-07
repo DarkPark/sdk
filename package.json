@@ -18,6 +18,7 @@
         "link": "node index.js link",
         "unlink": "node index.js unlink",
         "sass": "node index.js sass",
+        "check": "node index.js check",
         "lint": "node index.js lint",
         "update": "./run.sh update",
         "mount": "./run.sh mount",
