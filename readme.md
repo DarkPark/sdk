@@ -7,9 +7,9 @@ Install global packages:
 
 ```bash
 sudo npm install -g eslint
-sudo npm install -g spasdk/spasdk
-sudo npm install -g stbsdk/stbsdk
-sudo npm install -g magsdk/magsdk
+sudo npm install -g spasdk
+sudo npm install -g stbsdk
+sudo npm install -g magsdk
 ```
 
 
