@@ -420,11 +420,21 @@ methods.check = function () {
                                     npmRevision = stdout.trim();
 
                                     if ( gitRevision === npmRevision ) {
-                                        console.log('\u001b[32mup-to-date\u001b[0m\t%s\t%s\t%s\t%s',
+                                        console.log('\n\u001b[32mup-to-date\u001b[0m\t%s\t%s\t%s\t%s',
                                             npmRevision, gitRevision, info.version, info.name);
                                     } else {
-                                        console.log('\u001b[31mout-of-date\u001b[0m\t%s\t%s\t%s\t%s',
+                                        console.log('\n\u001b[31mout-of-date\u001b[0m\t%s\t%s\t%s\t%s',
                                             npmRevision, gitRevision, info.version, info.name);
+
+                                        try {
+                                            console.log(execSync(
+                                                'git',
+                                                ['log', '--pretty=format:%s', npmRevision + '..HEAD'],
+                                                {cwd: path.join(root, orgName, repoName)}
+                                            ).toString());
+                                        } catch ( error ) {
+                                            //console.log(error.toString());
+                                        }
                                     }
                                 }
                                 callback();
