@@ -45,7 +45,7 @@ module.exports = {
     magcore: {
         'stalker-apps-base':  {name: 'stalker-apps-base', url: 'git@github.com:magcore/stalker-apps-base.git'},
         'stalker-apps-extra': {name: 'stalker-apps-extra', url: 'git@github.com:magcore/stalker-apps-extra.git'},
-        'platforms':          {name: 'magcore-platforms', url: 'git@192.168.1.222:/web/magcore/platforms.git'}
+        'platforms':          {name: 'magcore-platforms', url: 'git@gitlab.infomir.com.ua:web/magcore/platforms.git'}
     },
     spasdk: {
         'app':                    {name: 'spa-app', url: 'git@github.com:spasdk/app.git'},
@@ -114,7 +114,7 @@ module.exports = {
         'plugin-weinre':       {name: 'stb-plugin-weinre', url: 'git@github.com:stbsdk/plugin-weinre.git'}
     },
     tznsdk: {
-        'app':  {name: 'tzn-app',  url: 'git@192.168.1.222:/web/tznsdk/app.git'},
-        'keys': {name: 'tzn-keys', url: 'git@192.168.1.222:/web/tznsdk/keys.git'}
+        'app':  {name: 'tzn-app',  url: 'git@gitlab.infomir.com.ua:web/tznsdk/app.git'},
+        'keys': {name: 'tzn-keys', url: 'git@gitlab.infomir.com.ua:web/tznsdk/keys.git'}
     }
 };
