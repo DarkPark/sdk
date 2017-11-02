@@ -346,7 +346,7 @@ methods.unlink = function () {
             var pkgName = repos[orgName][repoName].name,
                 srcName = path.join(root, 'node_modules', pkgName || '');
 
-            if ( pkgName && fs.existsSync(srcName) ) {
+            if ( pkgName && fs.existsSync(srcName) && fs.statSync(srcName).isSymbolicLink() ) {
                 fs.unlinkSync(srcName);
                 console.log('-' + srcName);
             }
