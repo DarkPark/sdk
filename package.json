@@ -1,7 +1,7 @@
 {
     "name": "sdk",
     "version": "1.0.0",
-    "description": "SDK deployment management.",
+    "description": "SDK development and deployment management.",
     "author": {
         "name": "Stanislav Kalashnik",
         "email": "darkpark.main@gmail.com"
@@ -25,9 +25,12 @@
         "umount": "./run.sh umount"
     },
     "dependencies": {
+        "cjs-async": "1.*.*",
+        "cjs-eslint-config": "1.*.*"
+    },
+    "devDependencies": {
         "gremlins.js": "marmelab/gremlins.js",
         "bufferutil": "3.*.*",
-        "cjs-async": "1.*.*",
         "chokidar": "1.*.*",
         "code-proxy": "1.*.*",
         "commander": "2.*.*",
