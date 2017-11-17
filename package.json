@@ -10,6 +10,7 @@
         "type": "git",
         "url": "https://github.com/darkpark/sdk.git"
     },
+    "bin": "./bin/cli.js",
     "scripts": {
         "clone": "node index.js clone",
         "pull": "node index.js pull",
@@ -26,17 +27,17 @@
     },
     "dependencies": {
         "cjs-async": "1.*.*",
-        "cjs-eslint-config": "1.*.*"
+        "cjs-eslint-config": "1.*.*",
+        "commander": "2.*.*",
+        "debug": "3.*.*"
     },
     "devDependencies": {
-        "gremlins.js": "marmelab/gremlins.js",
         "bufferutil": "3.*.*",
         "chokidar": "1.*.*",
         "code-proxy": "1.*.*",
-        "commander": "2.*.*",
-        "debug": "3.*.*",
         "extend": "3.*.*",
         "gettext-parser": "1.*.*",
+        "gremlins.js": "marmelab/gremlins.js",
         "ip": "1.*.*",
         "jade": "1.*.*",
         "jsdoc": "3.*.*",
