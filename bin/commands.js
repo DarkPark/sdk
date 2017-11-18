@@ -167,12 +167,16 @@ module.exports = {
     },
 
     lint: function () {
+        var env = Object.assign({}, process.env);
+
+        delete env.DEBUG;
+
         Object.keys(repos).forEach(function ( orgName ) {
             var debug = require('debug')(orgName);
 
             Object.keys(repos[orgName]).forEach(function ( repoName ) {
                 var pkgFile = path.join(sdkPath, orgName, repoName, 'package.json'),
-                    pkgData, command;
+                    pkgData, result;
 
                 if ( fs.existsSync(pkgFile) ) {
                     // package.json content
@@ -180,12 +184,15 @@ module.exports = {
 
                     if ( pkgData.scripts && pkgData.scripts.lint ) {
                         debug('[%s] %s', repoName, pkgData.scripts.lint);
-                        command = pkgData.scripts.lint.split(' ');
 
-                        console.log(command.shift());
-                        console.log(command);
-                        //exec(command.shift(), command.join(' '), {cwd: path.join(sdkPath, orgName, repoName)});
-                        exec('npm', ['run', 'lint'], {env: {}, cwd: path.join(sdkPath, orgName, repoName)});
+                        try {
+                            result = exec(
+                                'npm', ['run', '--silent', 'lint'], {env: env, cwd: path.join(sdkPath, orgName, repoName)}
+                            ).toString().trim();
+                            result && console.log(result);
+                        } catch ( error ) {
+                            console.log(error.stdout.toString());
+                        }
                     } else {
                         debug('[%s] lint script was not found', repoName);
                     }
