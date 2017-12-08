@@ -1,7 +1,7 @@
 {
     "name": "sdk",
     "version": "1.0.0",
-    "description": "SDK deployment management.",
+    "description": "SDK development and deployment management.",
     "author": {
         "name": "Stanislav Kalashnik",
         "email": "darkpark.main@gmail.com"
@@ -10,6 +10,7 @@
         "type": "git",
         "url": "https://github.com/darkpark/sdk.git"
     },
+    "bin": "./bin/cli.js",
     "scripts": {
         "clone": "node index.js clone",
         "pull": "node index.js pull",
@@ -18,38 +19,45 @@
         "link": "node index.js link",
         "unlink": "node index.js unlink",
         "sass": "node index.js sass",
+        "check": "node index.js check",
         "lint": "node index.js lint",
         "update": "./run.sh update",
         "mount": "./run.sh mount",
         "umount": "./run.sh umount"
     },
     "dependencies": {
-        "gremlins.js": "marmelab/gremlins.js",
-        "bufferutil": "1.*.*",
+        "cjs-eslint-config": "^1.1.0",
+        "commander": "^2.12.2",
+        "debug": "3.*.*",
+        "pug": "^2.0.0-rc.4",
+        "rimraf": "^2.6.2"
+    },
+    "devDependencies": {
+        "bufferutil": "3.*.*",
         "chokidar": "1.*.*",
         "code-proxy": "1.*.*",
-        "commander": "2.*.*",
-        "debug": "2.*.*",
         "extend": "3.*.*",
         "gettext-parser": "1.*.*",
+        "gremlins.js": "github:marmelab/gremlins.js",
         "ip": "1.*.*",
         "jade": "1.*.*",
+        "jsdoc": "3.*.*",
         "json-loader": "0.*.*",
-        "langs": "1.*.*",
+        "langs": "2.*.*",
         "minimist": "1.*.*",
-        "mocha": "3.*.*",
-        "node-notifier": "4.*.*",
-        "node-sass": "3.*.*",
+        "mocha": "4.*.*",
+        "node-notifier": "5.*.*",
+        "node-sass": "^4.7.2",
         "node-static": "0.*.*",
         "open": "0.*.*",
         "require-nocache": "1.*.*",
-        "should": "11.*.*",
+        "should": "13.*.*",
         "ssh2": "0.*.*",
-        "tiny-lr": "0.*.*",
-        "utf-8-validate": "1.*.*",
-        "webpack": "1.*.*",
+        "tiny-lr": "1.*.*",
+        "utf-8-validate": "4.*.*",
+        "webpack": "^3.9.1",
         "weinre": "2.0.0-pre-I0Z7U9OV",
-        "ws": "1.*.*"
+        "ws": "^3.3.2"
     },
     "license": "GPL-3.0"
 }

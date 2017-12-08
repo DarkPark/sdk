@@ -7,9 +7,9 @@ Install global packages:
 
 ```bash
 sudo npm install -g eslint
-sudo npm install -g spasdk/spasdk
-sudo npm install -g stbsdk/stbsdk
-sudo npm install -g magsdk/magsdk
+sudo npm install -g spasdk
+sudo npm install -g stbsdk
+sudo npm install -g magsdk
 ```
 
 
@@ -79,12 +79,16 @@ npm run-script link
 Make main packages globally available (similar to `npm link`):
 
 ```bash
+sudo ln -sr . /usr/lib/node_modules/sdk
 sudo ln -sr ./spasdk/spasdk /usr/lib/node_modules/spasdk
 sudo ln -sr ./stbsdk/stbsdk /usr/lib/node_modules/stbsdk
 sudo ln -sr ./magsdk/magsdk /usr/lib/node_modules/magsdk
+sudo ln -sr ./cli/node-runner /usr/lib/node_modules/node-runner
+sudo ln -s /usr/lib/node_modules/sdk/bin/cli.js /usr/bin/sdk
 sudo ln -s /usr/lib/node_modules/spasdk/bin/cli.js /usr/bin/spasdk
 sudo ln -s /usr/lib/node_modules/stbsdk/bin/cli.js /usr/bin/stbsdk
 sudo ln -s /usr/lib/node_modules/magsdk/bin/cli.js /usr/bin/magsdk
+sudo ln -s /usr/lib/node_modules/node-runner/bin/cli.js /usr/bin/runner
 ```
 
 
@@ -167,8 +171,8 @@ sudo ./run.sh unbind [path to the project]
 
 ## Contribution ##
 
-If you have any problem or suggestion please open an issue [here](https://github.com/DarkPark/sdk/issues).
-Pull requests are welcomed with respect to the [JavaScript Code Style](https://github.com/DarkPark/jscs).
+If you have any problems or suggestions please open an [issue](https://github.com/DarkPark/sdk/issues)
+according to the contribution [rules](.github/contributing.md).
 
 
 ## License ##

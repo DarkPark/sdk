@@ -1,6 +1,7 @@
 .idea
 node_modules
 cjssdk/*
+cli/*
 magcore/*
 magsdk/*
 spasdk/*
