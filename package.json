@@ -26,11 +26,12 @@
         "umount": "./run.sh umount"
     },
     "dependencies": {
-        "cjs-eslint-config": "^1.1.0",
-        "commander": "^2.12.2",
+        "bufferutil": "3.*.*",
+        "cjs-async": "1.*.*",
+        "cjs-eslint-config": "1.*.*",
+        "commander": "2.*.*",
         "debug": "3.*.*",
-        "pug": "^2.0.0-rc.4",
-        "rimraf": "^2.6.2"
+        "pug": "^2.0.0-rc.4"
     },
     "devDependencies": {
         "bufferutil": "3.*.*",
@@ -38,7 +39,7 @@
         "code-proxy": "1.*.*",
         "extend": "3.*.*",
         "gettext-parser": "1.*.*",
-        "gremlins.js": "github:marmelab/gremlins.js",
+        "gremlins.js": "marmelab/gremlins.js",
         "ip": "1.*.*",
         "jade": "1.*.*",
         "jsdoc": "3.*.*",
@@ -47,17 +48,17 @@
         "minimist": "1.*.*",
         "mocha": "4.*.*",
         "node-notifier": "5.*.*",
-        "node-sass": "^4.7.2",
+        "node-sass": "4.*.*",
         "node-static": "0.*.*",
         "open": "0.*.*",
         "require-nocache": "1.*.*",
         "should": "13.*.*",
         "ssh2": "0.*.*",
         "tiny-lr": "1.*.*",
-        "utf-8-validate": "4.*.*",
-        "webpack": "^3.9.1",
+        "utf-8-validate": "3.*.*",
+        "webpack": "3.*.*",
         "weinre": "2.0.0-pre-I0Z7U9OV",
-        "ws": "^3.3.2"
+        "ws": "3.*.*"
     },
     "license": "GPL-3.0"
 }
